@@ -1,67 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tips Discord</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f0f0f0;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: center;
-        }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #fff;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .repo-link {
-            display: block;
-            margin-top: 10px;
-            text-align: center;
-        }
-        .discord-button {
-            display: block;
-            width: 200px;
-            margin: 20px auto;
-            text-align: center;
-            background-color: #7289da;
-            color: #fff;
-            padding: 10px;
-            border-radius: 5px;
-            text-decoration: none;
-        }
-        .discord-button:hover {
-            background-color: #677bc4;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your GitHub Portfolio</title>
+  <style>
+    /* Basic styling for tabs */
+    .tab {
+      display: none;
+    }
+    .tab.active {
+      display: block;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Tips Discord</h1>
-    </header>
-    <div class="container">
-        <h2>My GitHub Repositories</h2>
-        <p>Check out my GitHub repositories:</p>
-        <ul>
-            <li><a href="https://github.com/Tips-Discord/Cwelium">Cwelium (Most Starred)</a></li>
-            <!-- Add other repositories here -->
-        </ul>
-        <h2>Discord Bot</h2>
-        <p>Bio: Ai powered by scraping messages from exploit chatgpt+guilded</p>
-        <p>Uptime: <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211">https://stats.uptimerobot.com/G6nTrROdco/796412211</a></p>
-        <p>Join my Discord server: <a href="https://discord.gg/huYhNFnaSc">https://discord.gg/huYhNFnaSc</a></p>
-        <a class="discord-button" href="https://discord.com/api/oauth2/authorize?client_id=1204471002583801887&permissions=40654050025281&scope=bot%20applications.commands">Add Bot to Discord</a>
-    </div>
+
+<h1>Welcome to Your GitHub Portfolio</h1>
+
+<!-- Tabs navigation -->
+<div>
+  <button onclick="openTab('repos')" class="tab-link">GitHub Repos</button>
+  <button onclick="openTab('cwelium')" class="tab-link">Most Starred Repo (Cwelium)</button>
+  <button onclick="openTab('discord-bot')" class="tab-link">Discord Bot</button>
+  <button onclick="openTab('uptime')" class="tab-link">Uptime Stats</button>
+  <button onclick="openTab('discord-server')" class="tab-link">Discord Server</button>
+</div>
+
+<!-- Content for each tab -->
+<div id="repos" class="tab active">
+  <!-- Content for GitHub Repos tab -->
+  <h2>GitHub Repos</h2>
+  <p>List of your GitHub repositories...</p>
+  <a href="https://github.com/Tips-Discord">View all repos</a>
+</div>
+
+<div id="cwelium" class="tab">
+  <!-- Content for Cwelium tab -->
+  <h2>Most Starred Repo (Cwelium)</h2>
+  <p>Information about your Cwelium repo...</p>
+  <a href="https://github.com/Tips-Discord/Cwelium">Check out Cwelium</a>
+</div>
+
+<div id="discord-bot" class="tab">
+  <!-- Content for Discord Bot tab -->
+  <h2>Discord Bot</h2>
+  <p>Your AI-powered Discord bot...</p>
+  <button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=1204471002583801887&permissions=40654050025281&scope=bot%20applications.commands'">Add Bot</button>
+  <p>Bio: Ai powered by scraping messages from exploit chatgpt+guilded</p>
+</div>
+
+<div id="uptime" class="tab">
+  <!-- Content for Uptime Stats tab -->
+  <h2>Uptime Stats</h2>
+  <p>Check out the uptime stats for your bot...</p>
+  <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211">Uptime Stats</a>
+</div>
+
+<div id="discord-server" class="tab">
+  <!-- Content for Discord Server tab -->
+  <h2>Discord Server</h2>
+  <p>Join your Discord community...</p>
+  <a href="https://discord.gg/huYhNFnaSc">Join Discord Server</a>
+</div>
+
+<script>
+  // Function to switch tabs
+  function openTab(tabName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tab");
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].style.display = "none";
+    }
+    document.getElementById(tabName).style.display = "block";
+  }
+  // Display default tab
+  openTab('repos');
+</script>
+
 </body>
 </html>
