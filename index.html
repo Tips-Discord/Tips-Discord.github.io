@@ -3,9 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title id="animated-title">Tips's PyDev Playground</title>
+  <title>Tips's PyDev Playground</title>
   <style>
-    /* Basic styling for tabs */
     .tab {
       display: none;
     }
@@ -14,7 +13,6 @@
       animation: fadeIn 0.5s ease forwards;
     }
 
-    /* Fade-in animation */
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -24,7 +22,6 @@
       }
     }
 
-    /* Centering buttons */
     .tab-buttons {
       text-align: center;
       position: relative;
@@ -41,13 +38,15 @@
       transition: color 0.3s ease, transform 0.3s ease;
     }
     .tab-buttons button:hover {
-      color: #ff0; /* Yellow color on hover */
+      color: rgba(243, 103, 9, 0.842);
       transform: scale(1.1);
     }
+    .tab-buttons button:focus {
+      outline: none;
+    }
 
-    /* Background styling */
     body {
-      background-image: url('https://media.discordapp.net/attachments/766703671504797696/1198114808902451220/ezgif.com-video-to-gif_2.gif?ex=65e2a45e&is=65d02f5e&hm=5db17d557b80eabdcf51760cd514b5c3a3ae7ba1bf92da35a2b44afec30ab500&');
+      background-image: url('https://media.discordapp.net/attachments/766703671504797696/1198114808902451220/ezgif.com-video-to-gif_2.gif?ex=661a035e&is=66078e5e&hm=1e67241b1c7f79eaba77de9fafcb84ab40bbfec15e75aba2511ad1e2e4a9b78f&');
       background-size: cover;
       background-position: center;
       height: 100vh;
@@ -56,16 +55,15 @@
     }
     .shader {
       position: absolute;
-      top: -50px; /* Adjust to move the shader up/down */
-      left: -50px; /* Adjust to move the shader left/right */
-      width: calc(100% + 100px); /* Adjust to increase/decrease width */
-      height: calc(100% + 100px); /* Adjust to increase/decrease height */
-      backdrop-filter: blur(25px); /* Increased blur effect */
-      background-color: rgba(135, 206, 235, 0.003); /* Sky Blue with 0.5 opacity */
+      top: -50px;
+      left: -50px;
+      width: calc(100% + 100px);
+      height: calc(100% + 100px); 
+      backdrop-filter: blur(5px); /* Adding blur effect */
+      background-color: rgba(135, 206, 235, 0.003); 
       z-index: 1;
     }
 
-    /* Content styling */
     .content {
       position: relative;
       z-index: 2;
@@ -73,37 +71,21 @@
       padding-top: 20%;
     }
 
-    /* Animated title */
     .animated-title {
       font-size: 48px;
       font-weight: bold;
       color: transparent;
-      background: linear-gradient(90deg, #ffffff, #00ffff, #ffffff); /* Shaders gradient */
-      background-clip: text; /* Clip text to the background */
-      -webkit-background-clip: text; /* For Safari/Chrome */
-      animation: neon 1s ease-in-out infinite alternate;
-    }
-
-    @keyframes neon {
-      0% {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #0ff, 0 0 70px #0ff, 0 0 80px #0ff, 0 0 100px #0ff, 0 0 150px #0ff;
-      }
-      100% {
-        text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #0ff, 0 0 35px #0ff, 0 0 40px #0ff, 0 0 50px #0ff, 0 0 75px #0ff;
-      }
+      text-shadow: 0 0 1px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff, 0 0 150px #00ffff;
     }
   </style>
 </head>
 <body>
 
-<!-- Background shader -->
 <div class="shader"></div>
 
-<!-- Content -->
 <div class="content">
   <h1 class="animated-title" id="title"></h1>
 
-  <!-- Tabs navigation -->
   <div class="tab-buttons">
     <button onclick="openTab('repos')" class="tab-link">GitHub Repos</button>
     <button onclick="openTab('cwelium')" class="tab-link">Most Starred Repo (Cwelium)</button>
@@ -112,68 +94,70 @@
     <button onclick="openTab('discord-server')" class="tab-link">Join my Community :3</button>
   </div>
 
-  <!-- Content for each tab -->
-  <div id="d" class="tab active">
+  <div id="d" class="tab">
   </div>
 
   <div id="repos" class="tab">
-    <!-- Content for GitHub Repos tab -->
-    <h2>GitHub Repos</h2>
-    <a href="https://github.com/Tips-Discord">View all repos</a>
+    <h2 style="color: #00ffff;">GitHub Repos</h2>
+    <a href="https://github.com/Tips-Discord" style="color: #00ffff;">View all repos</a>
   </div>
 
   <div id="uptime" class="tab">
-    <h2>Uptime</h2>
-    <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211">View UpTime</a>
+    <h2 style="color: #00ffff;">Uptime</h2>
+    <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211" style="color: #00ffff;">View UpTime</a>
   </div>
 
   <div id="cwelium" class="tab">
-    <!-- Content for Cwelium tab -->
-    <h2>Most Starred Repo (Cwelium)</h2>
-    <p>Cwelium is a discord raider 😈 100% safe and always UpToDate.</p>
-    <a href="https://github.com/Tips-Discord/Cwelium">Check out Cwelium</a>
+    <h2 style="color: #00ffff;">Most Starred Repo (Cwelium)</h2>
+    <p style="color: #00ffff;">Cwelium is a discord raider 😈 100% safe and always UpToDate.</p>
+    <a href="https://github.com/Tips-Discord/Cwelium" style="color: #00ffff;">Check out Cwelium</a>
   </div>
 
   <div id="discord-bot" class="tab">
-    <!-- Content for Discord Bot tab -->
-    <h2>Discord Bot</h2>
-    <p>AI-powered Discord bot</p>
-    <p>Ai powered by scraping messages from exploit chatgpt+guilded</p>
-    <button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=1204471002583801887&permissions=40654050025281&scope=bot%20applications.commands'">Add Bot</button>
-    <button onclick="openTab('uptime')">View Uptime Stats</button>
+    <h2 style="color: #00ffff;">Discord Bot</h2>
+    <p style="color: #00ffff;">AI-powered Discord bot</p>
+    <p style="color: #00ffff;">Ai powered by scraping messages from exploit chatgpt+guilded</p>
+    <button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=1204471002583801887&permissions=40654050025281&scope=bot%20applications.commands'" style="color: #00ffff;">Add Bot</button>
+    <button onclick="openTab('uptime')" style="color: #00ffff;">View Uptime Stats</button>
   </div>
 
   <div id="discord-server" class="tab">
-    <!-- Content for Discord Server tab -->
-    <h2>Join my Community :3</h2>
-    <p>Join my Discord community!</p>
-    <a href="https://discord.gg/huYhNFnaSc">Join Discord Server</a>
+    <h2 style="color: #00ffff;">Join my Community :3</h2>
+    <p style="color: #00ffff;">Join my Discord community!</p>
+    <a href="https://discord.gg/huYhNFnaSc" style="color: #00ffff;">Join Discord Server</a>
   </div>
 
   <div id="contact-me" class="tab">
-    <!-- Content for Contact Me tab -->
-    <h2>Contact Me</h2>
-    <p>You can contact me via Discord or email:</p>
-    <p>Discord: skid_i_cwel</p>
-    <p>Email: tips94988@gmail.com</p>
+    <h2 style="color: #00ffff;">Contact Me</h2>
+    <p style="color: #00ffff;">You can contact me via Discord or email:</p>
+    <p style="color: #00ffff;">Discord: skid_i_cwel</p>
+    <p style="color: #00ffff;">Email: tips94988@gmail.com</p>
   </div>
 </div>
 
-<!-- Script for tab functionality -->
 <script>
-  // Function to switch tabs
   function openTab(tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tab");
     for (i = 0; i < tabcontent.length; i++) {
       tabcontent[i].style.display = "none";
+      tabcontent[i].style.color = ""; // Reset text color for all tabs
     }
     document.getElementById(tabName).style.display = "block";
+    document.getElementById(tabName).classList.add('active');
+    document.getElementById(tabName).style.color = "#00ffff"; // Change text color for the opened tab
+    animateButton(tabName);
   }
-  // Display default tab
-  openTab('repos');
+  
+  function animateButton(tabName) {
+    var button = document.querySelector(".tab-link.active");
+    if (button) {
+      button.classList.remove("active");
+    }
+    var activeButton = document.querySelector("button[data-tab='"+ tabName +"']");
+    activeButton.classList.add("active");
+  }
 
-  // Animated title
   var title = document.getElementById("title");
   var text = "Tips's PyDev Playground";
   var index = 0;
@@ -182,7 +166,7 @@
     if (index < text.length) {
       title.innerHTML += text.charAt(index);
       index++;
-      setTimeout(typeEffect, 100);
+      setTimeout(typeEffect, 120);
     }
   }
 
