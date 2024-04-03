@@ -1,1 +1,16 @@
-
+Welcome to Cumit! By accessing or using our Discord bot, you agree to comply with and be bound by these Terms of Service. If you disagree with any part of the terms, then you may not access the bot.
+    
+  2. Use License
+    Permission is granted to temporarily use the bot for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title.
+    
+  3. Prohibited Uses
+    You must not use the bot in any way that causes, or may cause, damage to the bot or impairment of the availability or accessibility of the bot.
+    
+  4. Limitations
+    In no event shall Cumit or its suppliers be liable for any damages arising out of the use or inability to use the bot.
+    
+  5. Changes to Terms
+    We reserve the right to revise these terms of service at any time without prior notice.
+    
+  6. Governing Law
+    These terms and conditions are governed by and construed in accordance with the laws of Poland and Usa, and you irrevocably submit to the exclusive jurisdiction of the courts in that State or location.
