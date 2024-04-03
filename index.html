@@ -94,47 +94,37 @@
     <button onclick="openTab('discord-server')" class="tab-link">Join my Community :3</button>
   </div>
 
-  <div id="hidden-tab-1" class="tab hidden-page">
-    <h2 style="color: #00ffff;">Hidden Tab 1</h2>
-    <p style="color: #00ffff;">This is the content of Hidden Tab 1.</p>
-  </div>
-
-  <div id="hidden-tab-2" class="tab hidden-page">
-    <h2 style="color: #00ffff;">Hidden Tab 2</h2>
-    <p style="color: #00ffff;">This is the content of Hidden Tab 2.</p>
-  </div>
-
   <div id="d" class="tab">
   </div>
 
   <div id="repos" class="tab">
     <h2 style="color: #00ffff;">GitHub Repos</h2>
-    <a href="https://github.com/Tips-Discord" style="color: #00ffff;">View all repos</a>
+    <a href="https://github.com/Tips-Discord" style="color: #00ff37;">View all repos</a>
   </div>
 
   <div id="uptime" class="tab">
     <h2 style="color: #00ffff;">Uptime</h2>
-    <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211" style="color: #00ffff;">View UpTime</a>
+    <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211" style="color: #00ff37;">View UpTime</a>
   </div>
 
   <div id="cwelium" class="tab">
     <h2 style="color: #00ffff;">Most Starred Repo (Cwelium)</h2>
     <p style="color: #00ffff;">Cwelium is a discord raider 😈 100% safe and always UpToDate.</p>
-    <a href="https://github.com/Tips-Discord/Cwelium" style="color: #00ffff;">Check out Cwelium</a>
+    <a href="https://github.com/Tips-Discord/Cwelium" style="color: #00ff37;">Check out Cwelium</a>
   </div>
 
   <div id="discord-bot" class="tab">
     <h2 style="color: #00ffff;">Discord Bot</h2>
     <p style="color: #00ffff;">AI-powered Discord bot</p>
     <p style="color: #00ffff;">Ai powered by scraping messages from exploit chatgpt+guilded</p>
-    <button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=1204471002583801887&permissions=40654050025281&scope=bot%20applications.commands'" style="color: #00ffff;">Add Bot</button>
-    <button onclick="openTab('uptime')" style="color: #00ffff;">View Uptime Stats</button>
+    <button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=1204471002583801887&permissions=40654050025281&scope=bot%20applications.commands'" style="color: #00ff37;">Add Bot</button>
+    <button onclick="openTab('uptime')" style="color: #00ff37;">View Uptime Stats</button>
   </div>
 
   <div id="discord-server" class="tab">
     <h2 style="color: #00ffff;">Join my Community :3</h2>
     <p style="color: #00ffff;">Join my Discord community!</p>
-    <a href="https://discord.gg/huYhNFnaSc" style="color: #00ffff;">Join Discord Server</a>
+    <a href="https://discord.gg/huYhNFnaSc" style="color: #00ff37;">Join Discord Server</a>
   </div>
 
   <div id="contact-me" class="tab">
@@ -146,14 +136,6 @@
 </div>
 
 <script>
-  function showPage(pageId) {
-    var pages = document.querySelectorAll('.hidden-page');
-    pages.forEach(function(page) {
-      page.style.display = 'none';
-    });
-    document.getElementById(pageId).style.display = 'block';
-  }
-
   function openTab(tabName) {
     var i, tabcontent, tablinks;
     tabcontent = document.getElementsByClassName("tab");
