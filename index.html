@@ -309,7 +309,6 @@
 
         if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
           clearInterval(game);
-          alert("Game Over");
         }
 
         snake.unshift(newHead);
@@ -328,11 +327,11 @@
 
     document.addEventListener('keydown', function(event) {
         if (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i')) {
-            window.close();
+          location.href='https://www.youtube.com/shorts/2sDLk7Df8ho'
         }
 
         if (event.key === 'F12' || event.key === 'f12') {
-            window.close();
+          location.href='https://www.youtube.com/shorts/2sDLk7Df8ho'
         }
     });
 
