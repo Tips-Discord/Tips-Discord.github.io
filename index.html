@@ -13,116 +13,116 @@
       background-position: center;
       height: 100vh;
       overflow: hidden;
-      position: relative;
       margin: 0;
-      font-family: Arial, sans-serif;
+      font-family: 'Poppins', Arial, sans-serif;
       color: #00ffff;
     }
+
     .shader {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      backdrop-filter: blur(5px);
-      background-color: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(10px) brightness(0.6);
+      background-color: rgba(0, 0, 0, 0.7);
       z-index: 1;
     }
+
     .content {
       position: relative;
       z-index: 2;
       text-align: center;
       padding-top: 20%;
     }
+
     .animated-title {
-      font-size: 48px;
-      font-weight: bold;
-      color: #00ffff;
-      text-shadow: 0 0 1px #00ffff, 0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff, 0 0 70px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff, 0 0 150px #00ffff;
+      font-size: 58px;
+      font-weight: 700;
+      color: #ffffff;
+      text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 35px #00ffff;
+      letter-spacing: 2px;
     }
+
     .tab-buttons {
       text-align: center;
-      position: relative;
-      z-index: 2;
+      margin-top: 30px;
     }
+
     .tab-buttons button {
       margin: 10px;
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
       border: 2px solid #00ffff;
-      background: none;
+      background: rgba(0, 0, 0, 0.6);
       color: #00ffff;
       cursor: pointer;
-      transition: color 0.3s ease, transform 0.3s ease;
-      padding: 10px 20px;
-      border-radius: 5px;
+      transition: all 0.3s ease;
+      padding: 12px 24px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.5);
     }
+
     .tab-buttons button:hover {
-      color: rgba(243, 103, 9, 0.842);
+      background: #00ffff;
+      color: #000000;
       transform: scale(1.1);
+      box-shadow: 0px 6px 20px rgba(0, 255, 255, 0.8);
     }
+
     .tab {
       display: none;
-    }
-    .tab.active {
-      display: block;
+      margin-top: 20px;
+      opacity: 0;
       animation: fadeIn 0.5s ease forwards;
     }
-    .tab.fadeout {
+
+    .tab.fade-out {
       animation: fadeOut 0.5s ease forwards;
     }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-      }
-      to {
-        opacity: 0;
-      }
-    }
+
     .tab a {
       color: #00ff37;
       text-decoration: none;
+      font-weight: bold;
+      border-bottom: 2px solid transparent;
+      transition: color 0.3s ease, border-bottom 0.3s ease;
     }
+
     .tab a:hover {
-      text-decoration: underline;
+      color: #f36709;
+      border-bottom: 2px solid #f36709;
     }
-    .contact-info {
-      margin-top: 20px;
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
-    .sake-egg {
-      display: none;
-      color: #ff00ff;
+
+    @keyframes fadeOut {
+      from {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      to {
+        opacity: 0;
+        transform: translateY(20px);
+      }
     }
-    #snakeGame {
-      display: none;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(0, 0, 0, 0.8);
-      border: 2px solid #00ffff;
-      z-index: 3;
-    }
-    #snakeGame canvas {
-      display: block;
-      margin: auto;
-      border: 1px solid #00ffff;
-    }
+
     @media (max-width: 768px) {
       .animated-title {
         font-size: 36px;
       }
       .tab-buttons button {
         font-size: 14px;
-        padding: 8px 16px;
+        padding: 10px 20px;
       }
       .content {
         padding-top: 40%;
@@ -140,7 +140,6 @@
       <button onclick="toggleTab('discord-bot')">Discord Bot</button>
       <button onclick="toggleTab('contact-me')">Contact Me</button>
       <button onclick="toggleTab('discord-server')">Join my Community :3</button>
-      <button onclick="toggleSnakeGame()">Play Snake Game</button>
     </div>
     <div id="repos" class="tab">
       <h2>GitHub Repos</h2>
@@ -148,11 +147,11 @@
     </div>
     <div id="uptime" class="tab">
       <h2>Uptime</h2>
-      <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211">View UpTime</a>
+      <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211">View Uptime</a>
     </div>
     <div id="cwelium" class="tab">
       <h2>Most Starred Repo (Cwelium)</h2>
-      <p>Cwelium is a discord raider 😈 100% safe and always UpToDate.</p>
+      <p>Cwelium is a Discord raider 😈 100% safe and always UpToDate.</p>
       <a href="https://github.com/Tips-Discord/Cwelium">Check out Cwelium</a>
     </div>
     <div id="discord-bot" class="tab">
@@ -175,17 +174,12 @@
     </div>
   </div>
 
-  <div id="snakeGame">
-    <canvas id="gameCanvas" width="400" height="400"></canvas>
-    <button onclick="closeSnakeGame()">Close Game</button>
-  </div>
-
   <script>
     function openTab(tabName) {
-      var i, tabcontent;
-      tabcontent = document.getElementsByClassName("tab");
-      for (i = 0; i < tabcontent.length; i++) {
+      var tabcontent = document.getElementsByClassName("tab");
+      for (var i = 0; i < tabcontent.length; i++) {
         tabcontent[i].style.display = "none";
+        tabcontent[i].classList.remove("fade-out");
       }
       document.getElementById(tabName).style.display = "block";
       document.getElementById(tabName).classList.add('active');
@@ -193,11 +187,11 @@
 
     function toggleTab(tabName) {
       var tab = document.getElementById(tabName);
-      if (tab.style.display === "block") {
-        tab.classList.add('fadeout');
+      if (tab.classList.contains('active')) {
+        tab.classList.remove('active');
+        tab.classList.add('fade-out');
         setTimeout(() => {
           tab.style.display = "none";
-          tab.classList.remove('fadeout');
         }, 500);
       } else {
         openTab(tabName);
@@ -216,134 +210,6 @@
       }
     }
     typeEffect();
-
-    function toggleSnakeGame() {
-      var game = document.getElementById('snakeGame');
-      if (game.style.display === 'none' || game.style.display === '') {
-        game.style.display = 'block';
-        startGame();
-      } else {
-        game.style.display = 'none';
-        stopGame();
-      }
-    }
-
-    function closeSnakeGame() {
-      var game = document.getElementById('snakeGame');
-      game.style.display = 'none';
-      stopGame();
-    }
-
-    function startGame() {
-      const canvas = document.getElementById("gameCanvas");
-      const ctx = canvas.getContext("2d");
-
-      const box = 20;
-      let snake = [];
-      snake[0] = {x: 9 * box, y: 10 * box};
-
-      let food = {
-        x: Math.floor(Math.random() * 19 + 1) * box,
-        y: Math.floor(Math.random() * 19 + 3) * box
-      };
-
-      let score = 0;
-      let d;
-
-      document.addEventListener("keydown", direction);
-
-      function direction(event) {
-        if (event.keyCode === 37 && d !== "RIGHT") {
-          d = "LEFT";
-        } else if (event.keyCode === 38 && d !== "DOWN") {
-          d = "UP";
-        } else if (event.keyCode === 39 && d !== "LEFT") {
-          d = "RIGHT";
-        } else if (event.keyCode === 40 && d !== "UP") {
-          d = "DOWN";
-        }
-      }
-
-      function collision(newHead, snake) {
-        for (let i = 0; i < snake.length; i++) {
-          if (newHead.x === snake[i].x && newHead.y === snake[i].y) {
-            return true;
-          }
-        }
-        return false;
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-        for (let i = 0; i < snake.length; i++) {
-          ctx.fillStyle = (i === 0) ? "#00ff00" : "#ffffff";
-          ctx.fillRect(snake[i].x, snake[i].y, box, box);
-        }
-
-        ctx.fillStyle = "#ff0000";
-        ctx.fillRect(food.x, food.y, box, box);
-
-        let snakeX = snake[0].x;
-        let snakeY = snake[0].y;
-
-        if (d === "LEFT") snakeX -= box;
-        if (d === "UP") snakeY -= box;
-        if (d === "RIGHT") snakeX += box;
-        if (d === "DOWN") snakeY += box;
-
-        if (snakeX === food.x && snakeY === food.y) {
-          score++;
-          food = {
-            x: Math.floor(Math.random() * 19 + 1) * box,
-            y: Math.floor(Math.random() * 19 + 3) * box
-          };
-        } else {
-          snake.pop();
-        }
-
-        let newHead = {
-          x: snakeX,
-          y: snakeY
-        };
-
-        if (snakeX < 0 || snakeY < 0 || snakeX >= canvas.width || snakeY >= canvas.height || collision(newHead, snake)) {
-          clearInterval(game);
-        }
-
-        snake.unshift(newHead);
-
-        ctx.fillStyle = "#ffffff";
-        ctx.font = "20px Arial";
-        ctx.fillText("Score: " + score, 5, canvas.height - 5);
-      }
-
-      let game = setInterval(draw, 100);
-    }
-
-    function stopGame() {
-      clearInterval(game);
-    }
-
-    document.addEventListener('keydown', function(event) {
-        if (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'i')) {
-          location.href='https://www.youtube.com/shorts/2sDLk7Df8ho'
-        }
-
-        if (event.key === 'F12' || event.key === 'f12') {
-          location.href='https://www.youtube.com/shorts/2sDLk7Df8ho'
-        }
-    });
-
-    document.addEventListener('contextmenu', function(event) {
-      event.preventDefault();
-    });
-
-    (function() {
-      var element = new Image();
-      Object.defineProperty(element, 'id', { get: function() { window.close(); } });
-      console.dir(element);
-    })();
   </script>
 </body>
 </html>
