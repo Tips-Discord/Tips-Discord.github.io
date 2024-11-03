@@ -6,160 +6,28 @@
   <meta name="description" content="Tips's PyDev Playground - Explore my projects and join my community.">
   <meta name="keywords" content="PyDev, GitHub, Discord Bot, Cwelium, Community">
   <title>Tips's PyDev Playground</title>
-  <style>
-    body {
-      background-image: url('https://github.com/Tips-Discord/Tips-Discord.github.io/blob/main/ezgif.com-video-to-gif_2.gif?raw=true');
-      background-size: cover;
-      background-position: center;
-      height: 100vh;
-      overflow: hidden;
-      margin: 0;
-      font-family: 'Poppins', Arial, sans-serif;
-      color: #00ffff;
-    }
-
-    .shader {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      backdrop-filter: blur(10px) brightness(0.6);
-      background-color: rgba(0, 0, 0, 0.7);
-      z-index: 1;
-    }
-
-    .content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding-top: 20%;
-    }
-
-    .animated-title {
-      font-size: 58px;
-      font-weight: 700;
-      color: #ffffff;
-      text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 35px #00ffff;
-      letter-spacing: 2px;
-    }
-
-    .tab-buttons {
-      text-align: center;
-      margin-top: 30px;
-    }
-
-    .tab-buttons button {
-      margin: 10px;
-      font-size: 18px;
-      font-weight: bold;
-      border: 2px solid #00ffff;
-      background: rgba(0, 0, 0, 0.6);
-      color: #00ffff;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      padding: 12px 24px;
-      border-radius: 8px;
-      box-shadow: 0px 4px 15px rgba(0, 255, 255, 0.5);
-    }
-
-    .tab-buttons button:hover {
-      background: #00ffff;
-      color: #000000;
-      transform: scale(1.1);
-      box-shadow: 0px 6px 20px rgba(0, 255, 255, 0.8);
-    }
-
-    .tab {
-      display: none;
-      margin-top: 20px;
-      opacity: 0;
-      animation: fadeIn 0.5s ease forwards;
-    }
-
-    .tab.fade-out {
-      animation: fadeOut 0.5s ease forwards;
-    }
-
-    .tab a {
-      color: #00ff37;
-      text-decoration: none;
-      font-weight: bold;
-      border-bottom: 2px solid transparent;
-      transition: color 0.3s ease, border-bottom 0.3s ease;
-    }
-
-    .tab a:hover {
-      color: #f36709;
-      border-bottom: 2px solid #f36709;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    @keyframes fadeOut {
-      from {
-        opacity: 1;
-        transform: translateY(0);
-      }
-      to {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-    }
-
-    @media (max-width: 768px) {
-      .animated-title {
-        font-size: 36px;
-      }
-      .tab-buttons button {
-        font-size: 14px;
-        padding: 10px 20px;
-      }
-      .content {
-        padding-top: 40%;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
   <div class="shader"></div>
   <div class="content">
     <h1 class="animated-title" id="title"></h1>
     <div class="tab-buttons">
-      <button onclick="toggleTab('repos')">GitHub Repos</button>
-      <button onclick="toggleTab('cwelium')">Most Starred Repo (Cwelium)</button>
-      <button onclick="toggleTab('discord-bot')">Discord Bot</button>
-      <button onclick="toggleTab('contact-me')">Contact Me</button>
-      <button onclick="toggleTab('discord-server')">Join my Community :3</button>
+      <button data-tab="repos">GitHub Repos</button>
+      <button data-tab="cwelium">Most Starred Repo (Cwelium)</button>
+      <button data-tab="contact-me">Contact Me</button>
+      <button data-tab="discord-server">Join my Community :3</button>
     </div>
     <div id="repos" class="tab">
       <h2>GitHub Repos</h2>
+      <p>Check out all my GitHub repos.</p>
       <a href="https://github.com/Tips-Discord">View all repos</a>
-    </div>
-    <div id="uptime" class="tab">
-      <h2>Uptime</h2>
-      <a href="https://stats.uptimerobot.com/G6nTrROdco/796412211">View Uptime</a>
     </div>
     <div id="cwelium" class="tab">
       <h2>Most Starred Repo (Cwelium)</h2>
       <p>Cwelium is a Discord raider 😈 100% safe and always UpToDate.</p>
       <a href="https://github.com/Tips-Discord/Cwelium">Check out Cwelium</a>
-    </div>
-    <div id="discord-bot" class="tab">
-      <h2>Discord Bot</h2>
-      <p>AI-powered Discord bot</p>
-      <p>AI powered by scraping messages from exploit chatgpt+guilded</p>
-      <button onclick="location.href='https://discord.com/api/oauth2/authorize?client_id=1204471002583801887&permissions=40654050025281&scope=bot%20applications.commands'">Add Bot</button>
-      <button onclick="toggleTab('uptime')">View Uptime Stats</button>
     </div>
     <div id="discord-server" class="tab">
       <h2>Join my Community :3</h2>
@@ -168,48 +36,12 @@
     </div>
     <div id="contact-me" class="tab">
       <h2>Contact Me</h2>
-      <p>You can contact me via Discord or email:</p>
-      <p>Discord: skid_i_cwel</p>
-      <p>Email: tips94988@gmail.com</p>
+      <p>Contact me via Discord or email:</p>
+      <p>Discord: <a href="https://discord.com/users/1190052987477958806" target="_blank">skid_i_cwel</a></p>
+      <p>Email: <a href="mailto:tips94988@gmail.com">tips94988@gmail.com</a></p>
     </div>
   </div>
-
-  <script>
-    function openTab(tabName) {
-      var tabcontent = document.getElementsByClassName("tab");
-      for (var i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-        tabcontent[i].classList.remove("fade-out");
-      }
-      document.getElementById(tabName).style.display = "block";
-      document.getElementById(tabName).classList.add('active');
-    }
-
-    function toggleTab(tabName) {
-      var tab = document.getElementById(tabName);
-      if (tab.classList.contains('active')) {
-        tab.classList.remove('active');
-        tab.classList.add('fade-out');
-        setTimeout(() => {
-          tab.style.display = "none";
-        }, 500);
-      } else {
-        openTab(tabName);
-      }
-    }
-
-    var title = document.getElementById("title");
-    var text = "Tips's PyDev Playground";
-    var index = 0;
-
-    function typeEffect() {
-      if (index < text.length) {
-        title.innerHTML += text.charAt(index);
-        index++;
-        setTimeout(typeEffect, 120);
-      }
-    }
-    typeEffect();
-  </script>
+  <script src="https://unpkg.com/scrollreveal"></script>
+  <script src="js/script.js"></script>
 </body>
 </html>

@@ -1,0 +1,130 @@
+body {
+    background-image: url('https://github.com/Tips-Discord/Tips-Discord.github.io/blob/main/ezgif.com-video-to-gif_2.gif?raw=true');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    overflow-x: hidden;
+    margin: 0;
+    font-family: 'Poppins', Arial, sans-serif;
+    color: #00ffff;
+}
+
+.shader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(10px) brightness(0.6);
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+}
+
+.content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    padding-top: 20%;
+}
+
+.animated-title {
+    font-size: 58px;
+    font-weight: 700;
+    color: #ffffff;
+    text-shadow: 0 0 15px #00ffff, 0 0 25px #00ffff, 0 0 35px #00ffff;
+    letter-spacing: 2px;
+}
+
+.highlight {
+    font-weight: bold;
+    color: #ffbf00;
+    text-shadow: 0 0 10px rgba(255, 191, 0, 0.8), 0 0 20px rgba(255, 191, 0, 0.6);
+    font-size: 20px;
+}
+
+.tab-buttons {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.tab-buttons button {
+    margin: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ffff;
+    background: rgba(0, 0, 0, 0.7);
+    border: 2px solid #00ffff;
+    padding: 12px 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 255, 255, 0.5);
+    cursor: pointer;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.tab-buttons button:hover {
+    color: #000;
+    background: #00ffff;
+    box-shadow: 0 6px 20px rgba(0, 255, 255, 0.8);
+    transform: scale(1.1);
+}
+
+.tab-buttons button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, transparent 50%, rgba(255, 255, 255, 0.5) 50%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: right;
+}
+
+.tab-buttons button:hover::before {
+    opacity: 1;
+    transform: scaleX(1);
+}
+
+.tab {
+    display: none;
+    margin-top: 20px;
+    opacity: 0;
+    animation: fadeIn 0.5s ease forwards;
+}
+
+.tab.fade-out {
+    animation: fadeOut 0.5s ease forwards;
+}
+
+.tab a, .tab button {
+    color: #00ffcc;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid #00ffcc;
+    padding: 10px 20px;
+    margin-top: 20px;
+    display: inline-block;
+    border-radius: 8px;
+    background: transparent;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0, 255, 204, 0.5);
+    transition: color 0.3s ease;
+}
+
+.tab a:hover, .tab button:hover {
+    background: #00ffcc;
+    color: #000;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; transform: translateY(0); }
+    to { opacity: 0; transform: translateY(20px); }
+}
