@@ -114,9 +114,14 @@ body {
     transition: color 0.3s ease;
 }
 
-.tab a:hover, .tab button:hover {
-    background: #00ffcc;
-    color: #000;
+.tab a {
+    transition: background-color 0.5s, box-shadow 0.5s;
+  }
+  
+.tab a:hover {
+  background-color: #00ffff;
+  box-shadow: 0 6px 20px rgba(0, 255, 255, 0.8);
+  color: #000;
 }
 
 @keyframes fadeIn {
