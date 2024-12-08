@@ -1,5 +1,4 @@
 const titleElement = document.getElementById("title");
-const textToType = "Tips's PyDev Playground";
 let index = 0;
 
 function toggleTab(tabName) {
@@ -11,28 +10,26 @@ function toggleTab(tabName) {
 
         setTimeout(() => {
             try {
-                if (currentlyVisibleTab) {
-                    currentlyVisibleTab.style.display = "none";
-                    currentlyVisibleTab.classList.remove("fade-out", "active");
-                }
+                currentlyVisibleTab.style.display = "none";
+                currentlyVisibleTab.classList.remove("fade-out", "active");
 
-                if (activeTab) {
-                    activeTab.style.display = "block";
-                    activeTab.classList.add("active");
-                    const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
-                    if (tabButton) {
-                        document.querySelectorAll(".tab-buttons button").forEach(button => button.classList.remove("active"));
-                        tabButton.classList.add("active");
-                    }
+                activeTab.style.display = "block";
+                activeTab.classList.add("active");
+
+                const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
+                if (tabButton) {
+                    document.querySelectorAll(".tab-buttons button").forEach(button => button.classList.remove("active"));
+                    tabButton.classList.add("active");
                 }
             } catch (error) {
                 console.error(error);
             }
-        }, 500);
+        }, 300);
     } else if (!currentlyVisibleTab && activeTab) {
         try {
             activeTab.style.display = "block";
             activeTab.classList.add("active");
+
             const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
             if (tabButton) {
                 document.querySelectorAll(".tab-buttons button").forEach(button => button.classList.remove("active"));
@@ -59,9 +56,11 @@ if (document.querySelectorAll) {
 }
 
 function typeEffect() {
-    if (index < textToType.length) {
+    const text = "Tips's PyDev Playground";
+
+    if (index < text.length) {
         try {
-            titleElement.innerHTML += textToType.charAt(index);
+            titleElement.innerHTML += text.charAt(index);
             index++;
             setTimeout(typeEffect, 120);
         } catch (error) {
