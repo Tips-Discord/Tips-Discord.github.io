@@ -5,11 +5,21 @@ function toggleTab(tabName) {
     const activeTab = document.getElementById(tabName);
     const currentlyVisibleTab = document.querySelector(".tab.active");
 
-    if (currentlyVisibleTab && currentlyVisibleTab !== activeTab) {
+    if (currentlyVisibleTab) {
         currentlyVisibleTab.classList.add("fade-out");
 
         setTimeout(() => {
             try {
+                if (currentlyVisibleTab === activeTab) {
+                    currentlyVisibleTab.style.display = "none";
+                    currentlyVisibleTab.classList.remove("fade-out", "active");
+                    const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
+                    if (tabButton) {
+                        tabButton.classList.remove("active");
+                    }
+                    return;
+                }
+
                 currentlyVisibleTab.style.display = "none";
                 currentlyVisibleTab.classList.remove("fade-out", "active");
 
@@ -32,8 +42,12 @@ function toggleTab(tabName) {
 
             const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
             if (tabButton) {
-                document.querySelectorAll(".tab-buttons button").forEach(button => button.classList.remove("active"));
-                tabButton.classList.add("active");
+                document.querySelectorAll(".tab-buttons button").forEach(button => {
+                    button.classList.remove("active");
+                    if (button === tabButton) {
+                        button.classList.add("active");
+                    }
+                });
             }
         } catch (error) {
             console.error(error);
