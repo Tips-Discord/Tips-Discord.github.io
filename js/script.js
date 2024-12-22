@@ -100,3 +100,8 @@ if ('scrollBehavior' in document.documentElement.style) {
         }
     });
 }
+
+window.addEventListener('contextmenu', function(event){ 
+    event.preventDefault();
+    return false;
+});
