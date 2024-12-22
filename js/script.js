@@ -103,15 +103,12 @@ if ('scrollBehavior' in document.documentElement.style) {
 
 window.addEventListener('contextmenu', function(event){ 
     event.preventDefault();
-    return false;
 });
 
 document.addEventListener('selectstart', function(event) {
     event.preventDefault();
-    return false;
 });
 
 document.addEventListener('dragstart', function(event) {
     event.preventDefault();
-    return false;
 });
