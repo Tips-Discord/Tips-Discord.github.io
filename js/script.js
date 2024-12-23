@@ -76,7 +76,7 @@ function typeEffect() {
         try {
             titleElement.innerHTML += text.charAt(index);
             index++;
-            setTimeout(typeEffect, 120);
+            setTimeout(typeEffect, 100);
         } catch (error) {
             console.error(error);
         }
