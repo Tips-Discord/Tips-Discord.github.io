@@ -34,7 +34,7 @@ function toggleTab(tabName) {
             } catch (error) {
                 console.error(error);
             }
-        }, 300);
+        }, 559);
     } else if (!currentlyVisibleTab && activeTab) {
         try {
             activeTab.style.display = "block";
