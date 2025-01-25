@@ -6,10 +6,7 @@
 }
 
 body {
-    background-image: url('https://raw.githubusercontent.com/Tips-Discord/Tips-Discord.github.io/refs/heads/main/Useless/ezgif.com-video-to-gif_2.gif');
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
+    background: url('https://raw.githubusercontent.com/Tips-Discord/Tips-Discord.github.io/refs/heads/main/Useless/ezgif.com-video-to-gif_2.gif') center/cover fixed;
     height: 100vh;
     overflow-x: hidden;
     margin: 0;
@@ -38,7 +35,7 @@ body {
 .animated-title {
     font-size: 58px;
     font-weight: 700;
-    color: #ffffff;
+    color: #fff;
     text-shadow: 0 0 15px var(--primary-color), 0 0 25px var(--primary-color), 0 0 35px var(--primary-color);
     letter-spacing: 2px;
 }
@@ -66,14 +63,13 @@ body {
     border-radius: 25px;
     box-shadow: 0 5px 20px rgba(0, 255, 255, 0.7);
     cursor: pointer;
-    position: relative;
     transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
 .tab-buttons button:hover, .tab-buttons button.active {
     background: var(--primary-color);
     color: black;
-    transform: scale(1.104111);
+    transform: scale(1.1);
     box-shadow: 0 8px 25px rgba(0, 255, 255, 0.8);
 }
 
@@ -121,10 +117,6 @@ body {
     cursor: pointer;
     box-shadow: 0 4px 10px rgba(0, 255, 204, 0.5);
     transition: color 0.3s ease;
-}
-
-.tab a {
-    transition: background-color 0.5s, box-shadow 0.5s;
 }
 
 .tab a:hover {

@@ -9,37 +9,37 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <div class="shader"></div>
-  <div class="content">
-    <h1 class="animated-title" id="title"></h1>
-    <div class="tab-buttons">
-      <button data-tab="repos">GitHub Repos</button>
-      <button data-tab="cwelium">Most Starred Repo (Cwelium)</button>
-      <button data-tab="contact-me">Contact Me</button>
-      <button data-tab="discord-server">Join my Community :3</button>
-    </div>
-    <div id="repos" class="tab">
+  <div class="shader" role="presentation"></div>
+  <main class="content">
+    <h1 class="animated-title" id="title">Tips's PyDev Playground</h1>
+    <nav class="tab-buttons" aria-label="Main Navigation">
+      <button data-tab="repos" aria-controls="repos">GitHub Repos</button>
+      <button data-tab="cwelium" aria-controls="cwelium">Most Starred Repo (Cwelium)</button>
+      <button data-tab="contact-me" aria-controls="contact-me">Contact Me</button>
+      <button data-tab="discord-server" aria-controls="discord-server">Join my Community :3</button>
+    </nav>
+    <section id="repos" class="tab" role="tabpanel" aria-labelledby="repos">
       <h2>GitHub Repos</h2>
       <p>Check out all my GitHub repos.</p>
-      <a href="https://github.com/Tips-Discord" target="_blank">View all repos</a>
-    </div>
-    <div id="cwelium" class="tab">
+      <a href="https://github.com/Tips-Discord" target="_blank" rel="noopener noreferrer">View all repos</a>
+    </section>
+    <section id="cwelium" class="tab" role="tabpanel" aria-labelledby="cwelium">
       <h2>Most Starred Repo (Cwelium)</h2>
       <p>Cwelium is a Discord raider 😈 100% safe and always UpToDate.</p>
-      <a href="https://github.com/Tips-Discord/Cwelium" target="_blank">Check out Cwelium</a>
-    </div>
-    <div id="discord-server" class="tab">
+      <a href="https://github.com/Tips-Discord/Cwelium" target="_blank" rel="noopener noreferrer">Check out Cwelium</a>
+    </section>
+    <section id="discord-server" class="tab" role="tabpanel" aria-labelledby="discord-server">
       <h2>Join my Community :3</h2>
       <p>Join my Discord community!</p>
-      <a href="https://discord.gg/huYhNFnaSc" target="_blank">Join Discord Server</a>
-    </div>
-    <div id="contact-me" class="tab">
+      <a href="https://discord.gg/huYhNFnaSc" target="_blank" rel="noopener noreferrer">Join Discord Server</a>
+    </section>
+    <section id="contact-me" class="tab" role="tabpanel" aria-labelledby="contact-me">
       <h2>Contact Me</h2>
       <p>Contact me via Discord or email:</p>
-      <p>Discord: <a href="https://discord.com/users/1190052987477958806" target="_blank">skid_i_cwel</a></p>
-      <p>Email: <a href="mailto:tips94988@gmail.com" target="_blank">tips94988@gmail.com</a></p>
-    </div>
-  </div>
+      <p>Discord: <a href="https://discord.com/users/1190052987477958806" target="_blank" rel="noopener noreferrer">skid_i_cwel</a></p>
+      <p>Email: <a href="mailto:tips94988@gmail.com" target="_blank" rel="noopener noreferrer">tips94988@gmail.com</a></p>
+    </section>
+  </main>
   <script src="js/script.js"></script>
 </body>
 </html>

@@ -7,79 +7,37 @@ function toggleTab(tabName) {
 
     if (currentlyVisibleTab) {
         currentlyVisibleTab.classList.add("fade-out");
-
         setTimeout(() => {
-            try {
-                if (currentlyVisibleTab === activeTab) {
-                    currentlyVisibleTab.style.display = "none";
-                    currentlyVisibleTab.classList.remove("fade-out", "active");
-                    const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
-                    if (tabButton) {
-                        tabButton.classList.remove("active");
-                    }
-                    return;
-                }
-
-                currentlyVisibleTab.style.display = "none";
-                currentlyVisibleTab.classList.remove("fade-out", "active");
-
+            currentlyVisibleTab.style.display = "none";
+            currentlyVisibleTab.classList.remove("fade-out", "active");
+            if (currentlyVisibleTab !== activeTab) {
                 activeTab.style.display = "block";
                 activeTab.classList.add("active");
-
-                const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
-                if (tabButton) {
-                    document.querySelectorAll(".tab-buttons button").forEach(button => button.classList.remove("active"));
-                    tabButton.classList.add("active");
-                }
-            } catch (error) {
-                console.error(error);
             }
+            updateTabButtonState(tabName);
         }, 559);
-    } else if (!currentlyVisibleTab && activeTab) {
-        try {
-            activeTab.style.display = "block";
-            activeTab.classList.add("active");
-
-            const tabButton = document.querySelector(`.tab-buttons button[data-tab="${tabName}"]`);
-            if (tabButton) {
-                document.querySelectorAll(".tab-buttons button").forEach(button => {
-                    button.classList.remove("active");
-                    if (button === tabButton) {
-                        button.classList.add("active");
-                    }
-                });
-            }
-        } catch (error) {
-            console.error(error);
-        }
+    } else if (activeTab) {
+        activeTab.style.display = "block";
+        activeTab.classList.add("active");
+        updateTabButtonState(tabName);
     }
 }
 
-if (document.querySelectorAll) {
+function updateTabButtonState(tabName) {
     document.querySelectorAll(".tab-buttons button").forEach(button => {
-        if (button) {
-            button.addEventListener("click", () => {
-                try {
-                    toggleTab(button.getAttribute("data-tab"));
-                } catch (error) {
-                    console.error(error);
-                }
-            });
-        }
+        button.classList.toggle("active", button.getAttribute("data-tab") === tabName);
     });
 }
 
+document.querySelectorAll(".tab-buttons button").forEach(button => {
+    button.addEventListener("click", () => toggleTab(button.getAttribute("data-tab")));
+});
+
 function typeEffect() {
     const text = "Tips's PyDev Playground";
-
     if (index < text.length) {
-        try {
-            titleElement.innerHTML += text.charAt(index);
-            index++;
-            setTimeout(typeEffect, 100);
-        } catch (error) {
-            console.error(error);
-        }
+        titleElement.innerHTML += text.charAt(index++);
+        setTimeout(typeEffect, 100);
     }
 }
 
@@ -89,26 +47,10 @@ if (titleElement && titleElement.innerHTML.trim() === "") {
 
 if ('scrollBehavior' in document.documentElement.style) {
     document.querySelectorAll('.tab-buttons button').forEach(button => {
-        if (button) {
-            button.addEventListener('click', () => {
-                try {
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                } catch (error) {
-                    console.error(error);
-                }
-            });
-        }
+        button.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
     });
 }
 
-window.addEventListener('contextmenu', function(event){ 
-    event.preventDefault();
-});
-
-document.addEventListener('selectstart', function(event) {
-    event.preventDefault();
-});
-
-document.addEventListener('dragstart', function(event) {
-    event.preventDefault();
-});
+['contextmenu', 'selectstart', 'dragstart'].forEach(eventType => 
+    document.addEventListener(eventType, event => event.preventDefault())
+);
