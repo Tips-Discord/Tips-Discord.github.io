@@ -928,7 +928,7 @@
                 grid-column: 1;
                 grid-row: 2;
             }
-             .about-img, .about-text, .contact-info, .contact-form {
+            .about-img, .about-text, .contact-info {
                 opacity: 1 !important;
                 animation: none !important;
             }
@@ -1200,7 +1200,6 @@
                 </div>
                 <div class="contact-container">
                     <div class="contact-info">
-                        <!-- Discord -->
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fab fa-discord"></i></div>
                             <div class="contact-text">
@@ -1208,7 +1207,6 @@
                                 <a href="https://discord.gg/AQhmTHWRt4" target="_blank">discord.gg/AQhmTHWRt4</a>
                             </div>
                         </div>
-                        <!-- GitHub -->
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fab fa-github"></i></div>
                             <div class="contact-text">
@@ -1216,7 +1214,6 @@
                                 <a href="https://github.com/Tips-Discord/Cwelium" target="_blank">github.com/Tips-Discord/Cwelium</a>
                             </div>
                         </div>
-                        <!-- License -->
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-file-contract"></i></div>
                             <div class="contact-text">
@@ -1270,46 +1267,35 @@
             });
 
             const header = document.querySelector('header');
-            function handleScroll() {
-                header.classList.toggle('scrolled', window.scrollY > 50);
-            }
-            window.addEventListener('scroll', handleScroll);
-            handleScroll();
-
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
+                anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
-
-                    if (targetId.startsWith('#') && targetId.length > 1) {
+                    if (!targetId.startsWith('#') || targetId.length === 1) return;
                         e.preventDefault();
-                        const targetElement = document.querySelector(targetId);
 
-                        if (targetElement) {
-                            const offsetTop = targetElement.offsetTop - header.offsetHeight - 20;
-                            const startTime = performance.now();
-                            const startScroll = window.pageYOffset;
-                            const distance = offsetTop - startScroll;
+                    const targetElement = document.querySelector(targetId);
+                    if (!targetElement) return;
 
-                            function cubicBezierEase(t) {
-                                return t < 0.5
-                                    ? 4 * t * t * t
-                                    : 1 - Math.pow(-2 * t + 2, 3) / 2;
-                            }
+                    const headerHeight = header ? header.offsetHeight : 0;
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
 
-                            function animateScroll(currentTime) {
-                                const elapsed = currentTime - startTime;
-                                const progress = Math.min(elapsed / 1000, 1);
-                                const ease = cubicBezierEase(progress);
+                    const startTime = performance.now();
+                    const startScroll = window.pageYOffset;
+                    const distance = offsetTop - startScroll;
 
-                                window.scrollTo(0, startScroll + distance * ease);
-
-                                if (progress < 1) {
-                                    requestAnimationFrame(animateScroll);
-                                }
-                            }
-                            requestAnimationFrame(animateScroll);
-                        }
+                    function cubicBezierEase(t) {
+                        return t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
                     }
+
+                    function animateScroll(currentTime) {
+                    const elapsed = currentTime - startTime;
+                    const progress = Math.min(elapsed / 1000, 1);
+                    const ease = cubicBezierEase(progress);
+                    window.scrollTo(0, startScroll + distance * ease);
+                        if (progress < 1) requestAnimationFrame(animateScroll);
+                    }
+
+                    requestAnimationFrame(animateScroll);
                 });
             });
 
@@ -1359,18 +1345,18 @@
                });
             }, observerOptions);
 
-            document.querySelectorAll('section, .section-title, .qa-header, .qa-container, .contact-info, .contact-form, .about-img, .about-text').forEach(el => {
+            document.querySelectorAll('section, .section-title, .qa-header, .qa-container, .contact-info, .about-img, .about-text').forEach(el => {
                 sectionObserver.observe(el);
             });
             document.querySelectorAll('.skill-card').forEach(el => {
                 skillCardObserver.observe(el);
             });
             document.querySelectorAll('.qa-item').forEach(el => {
-                 qaItemObserver.observe(el);
+                qaItemObserver.observe(el);
             });
-             document.querySelectorAll('.stat-item').forEach(el => {
-                 el.style.animationPlayState = 'paused';
-                 statItemObserver.observe(el);
+            document.querySelectorAll('.stat-item').forEach(el => {
+                el.style.animationPlayState = 'paused';
+                statItemObserver.observe(el);
             });
             document.querySelectorAll('.why-card').forEach(el => {
                 skillCardObserver.observe(el);
