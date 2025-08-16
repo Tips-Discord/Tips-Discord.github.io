@@ -50,10 +50,6 @@
             opacity: 0;
             animation: fadeIn 0.8s forwards;
             background-image: radial-gradient(circle at 10% 10%, rgba(108, 99, 255, 0.05), transparent 40%);
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
         }
         .dark-mode body {
             background-image: radial-gradient(circle at 10% 10%, rgba(108, 99, 255, 0.1), transparent 40%);
@@ -1400,16 +1396,7 @@
             if (currentTheme) {
                 setTheme(currentTheme === 'dark');
             } else {
-                const now = new Date();
-                const hour = now.getHours();
-                const minute = now.getMinutes();
-                const isAfterTime = hour > 20 || (hour === 20 && minute >= 30);
-
-                if (isAfterTime) {
-                    setTheme(true);
-                } else {
-                    setTheme(prefersDarkScheme.matches);
-                }
+                setTheme(prefersDarkScheme.matches);
             }
 
             themeToggle.addEventListener('click', () => {
@@ -1612,18 +1599,6 @@
             }
             window.addEventListener('resize', handleResize);
             handleResize();
-
-            document.addEventListener('contextmenu', event => event.preventDefault());
-
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'J' || e.key === 'C')) || (e.ctrlKey && e.key === 'U')) {
-                    e.preventDefault();
-                }
-            });
-
-            document.addEventListener('selectstart', function(e) {
-                e.preventDefault();
-            });
 
             const featuresTrigger = document.getElementById('features-trigger');
             const modalOverlay = document.getElementById('features-modal');
