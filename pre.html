@@ -245,27 +245,58 @@
             margin-bottom: 1rem;
             line-height: 1.2;
             opacity: 0;
-            animation: fadeInUp 0.8s forwards 0.2s;
+            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards 0.2s;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+        }
+        .dark-mode .hero h1 {
+            text-shadow: 0 2px 20px rgba(108, 99, 255, 0.2);
         }
         .hero h1 span {
             color: var(--primary);
             position: relative;
+            display: inline-block;
         }
         .hero h1 span::after {
             content: '';
             position: absolute;
-            bottom: 5px;
+            bottom: 2px;
             left: 0;
             width: 100%;
-            height: 10px;
-            background: rgba(255, 101, 132, 0.3);
+            height: 8px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
             z-index: -1;
-            animation: pulse 2s infinite;
+            border-radius: 2px;
+            transform-origin: left;
+            transform: scaleX(0);
+            filter: blur(0px);
+            opacity: 1;
+            animation: 
+                draw-underline 0.6s cubic-bezier(0.645, 0.045, 0.355, 1) 0.8s forwards,
+                pulse-effect 2.5s ease-in-out 2.4s infinite;
         }
-        @keyframes pulse {
-            0% { opacity: 0.4; transform: scaleX(0.95); }
-            50% { opacity: 0.7; transform: scaleX(1); }
-            100% { opacity: 0.4; transform: scaleX(0.95); }
+        @keyframes draw-underline {
+            to {
+                transform: scaleX(1);
+                filter: blur(1.5px);
+            }
+        }
+        @keyframes pulse-effect {
+            0% {
+                filter: blur(0.5px);
+                opacity: 1;
+            }
+            10% {
+                filter: blur(1.5px);
+                opacity: 0.6;
+            }
+            55% {
+                filter: blur(1.5px);
+                opacity: 0.9;
+            }
+            100% {
+                filter: blur(1.5px);
+                opacity: 0.6;
+            }
         }
         .hero p {
             font-size: 1.2rem;
