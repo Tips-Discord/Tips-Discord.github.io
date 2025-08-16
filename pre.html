@@ -507,12 +507,6 @@
             font-weight: 700;
             color: var(--primary);
             margin-bottom: 0.5rem;
-            opacity: 0;
-            animation: countUp 1s forwards 1s;
-        }
-         @keyframes countUp {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
         }
         .stat-text {
             color: var(--gray);
@@ -1298,6 +1292,41 @@
                 });
             });
 
+            function animateCountUp(el) {
+                const originalText = el.textContent;
+                const target = parseInt(originalText, 10);
+
+                if (isNaN(target)) {
+                    el.style.opacity = 0;
+                    el.style.transform = 'translateY(10px)';
+                    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                    setTimeout(() => {
+                        el.style.opacity = 1;
+                        el.style.transform = 'translateY(0)';
+                    }, 100);
+                    return;
+                }
+
+                const duration = 2500;
+                const startTime = performance.now();
+
+                function step(currentTime) {
+                    const elapsedTime = currentTime - startTime;
+                    const progress = Math.min(elapsedTime / duration, 1);
+                    const currentNum = Math.floor(progress * target);
+
+                    el.textContent = currentNum;
+
+                    if (progress < 1) {
+                        requestAnimationFrame(step);
+                    } else {
+                        el.textContent = originalText;
+                    }
+                }
+                el.textContent = 0;
+                requestAnimationFrame(step);
+            }
+
             const observerOptions = {
                 root: null,
                 rootMargin: '0px 0px -100px 0px',
@@ -1335,11 +1364,15 @@
                 staggerItems(entries, qaItemObserver);
             }, observerOptions);
 
-            const statItemObserver = new IntersectionObserver((entries) => {
+            const statItemObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
                    if (entry.isIntersecting) {
                        entry.target.style.animationPlayState = 'running';
-                       statItemObserver.unobserve(entry.target);
+                       const statNumberEl = entry.target.querySelector('.stat-number');
+                       if (statNumberEl) {
+                           animateCountUp(statNumberEl);
+                       }
+                       observer.unobserve(entry.target);
                    }
                });
             }, observerOptions);
