@@ -58,12 +58,10 @@
         .dark-mode body {
             background-image: radial-gradient(circle at 10% 10%, rgba(108, 99, 255, 0.1), transparent 40%);
         }
-
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-
         h1, h2, h3, h4 {
             font-family: 'Montserrat', sans-serif;
             font-weight: 700;
@@ -121,13 +119,11 @@
             display: inline-block;
             margin-right: 0.5rem;
         }
-
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-5px); }
             100% { transform: translateY(0px); }
         }
-
         .nav-links {
             display: flex;
             list-style: none;
@@ -157,7 +153,6 @@
             transform: translateY(-2px);
         }
         .nav-links a:hover::after { width: 100%; }
-        
         .theme-toggle {
             background: var(--primary);
             color: white;
@@ -202,7 +197,6 @@
             transform: translateY(0) rotate(0deg);
             opacity: 1;
         }
-
         .hero {
             min-height: 100vh;
             display: flex;
@@ -461,7 +455,6 @@
             from { opacity: 0; transform: translateX(-30px); }
             to { opacity: 1; transform: translateX(0); }
         }
-
         .about-img:hover {
             transform: translateX(10px) translateY(-10px);
             box-shadow: var(--shadow-hover);
@@ -531,7 +524,6 @@
         .stat-item:nth-child(1) { animation-delay: 0.6s; -ms-grid-column: 1; grid-column: 1; }
         .stat-item:nth-child(2) { animation-delay: 0.7s; -ms-grid-column: 3; grid-column: 2; }
         .stat-item:nth-child(3) { animation-delay: 0.8s; -ms-grid-column: 5; grid-column: 3; }
-
         .stat-item:hover { transform: translateY(-8px) scale(1.03); }
         .stat-number {
             font-size: 2.5rem;
@@ -559,17 +551,14 @@
                 margin: 0;
             }
         }
-
         #why-cwelium {
             background: linear-gradient(135deg, rgba(108, 99, 255, 0.03), rgba(255, 101, 132, 0.03));
         }
-
         .why-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
         }
-
         .why-card {
             background: var(--light);
             padding: 2rem;
@@ -581,52 +570,43 @@
             transform: translateY(30px);
             opacity: 0;
         }
-
         .dark-mode .why-card {
             background: #252536;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
-
         .why-card.visible {
             transform: translateY(0);
             opacity: 1;
         }
-
         .why-card i {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
             transition: transform 0.3s ease, color 0.3s ease;
         }
-
         .why-card h3 {
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
-
         .why-card p {
             color: var(--gray);
             line-height: 1.6;
         }
-
         .why-card:hover {
             transform: translateY(-10px);
             box-shadow: var(--shadow-hover);
             border-color: var(--primary);
         }
-
         .why-card:hover i {
             transform: scale(1.2);
             color: var(--accent);
         }
-
         @media (max-width: 768px) {
             .why-container {
                 grid-template-columns: 1fr;
             }
         }
-
         .skill-card {
             background: var(--light);
             padding: 2rem;
@@ -719,7 +699,6 @@
             transform: translateX(0);
         }
         .dark-mode .qa-item { border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
-        
         .qa-question {
             font-size: 1.2rem;
             font-weight: 600;
@@ -872,7 +851,6 @@
             animation: fadeInUp 0.4s forwards 0.2s;
         }
         .contact-text a:hover { color: var(--primary); text-decoration: underline; }
-        
         footer {
             background: #f1f3f5;
             color: var(--gray);
@@ -886,7 +864,6 @@
             background: #0d0d1a;
             border-top: 1px solid rgba(255,255,255,0.1);
         }
-
         @keyframes fadeInUp {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
@@ -911,7 +888,6 @@
         .contact-item:hover .contact-icon i {
             animation: tada 1s ease;
         }
-
         @media (max-width: 992px) {
             .hero {
                 height: auto;
@@ -1338,12 +1314,11 @@
                     return;
                 }
 
-                const duration = 2500;
                 const startTime = performance.now();
 
                 function step(currentTime) {
                     const elapsedTime = currentTime - startTime;
-                    const progress = Math.min(elapsedTime / duration, 1);
+                    const progress = Math.min(elapsedTime / 2500, 1);
                     const currentNum = Math.floor(progress * target);
 
                     el.textContent = currentNum;
