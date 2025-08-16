@@ -6,7 +6,7 @@
     <meta name="description" content="Cwelium Raider - Advanced Discord Automation Tool with Multi-threading, Proxy Support, and Raid Features">
     <meta name="keywords" content="Discord Raider, Discord Raiding Tool, Discord Automation, Discord Bot, Discord Tool, Multi-threading, Proxy Support, Token Checker, Mass DM, Server Joiner, Discord Spammer, Server Nuker, Discord Nuke Bot, Mass Mention, Channel Spammer, Voice Chat Spammer, Discord Script, Multithreaded Discord Tool, HTTP Proxy, HTTPS Proxy, SOCKS5 Proxy, Request-based Raider, Discord API v9, High Performance Discord Tool, Fast Discord Raider, Token Verifier, Token Validator, Token Manager, Auto Joiner, Invite Joiner, Server Leaver, Mass Friend Request, Reaction Adder, Nickname Changer, Profile Changer, PFP Changer, HypeSquad Changer, Open Source Discord Tool, Free Discord Raider, GitHub Project, Cwelium Raider, Discord Security Tool, Discord Stress Testing, Discord Selfbot, User Bot Utility, Bulk DM, Batch Server Join, Discord Flooder, Automated Discord Actions, Discord Utility, High-Speed Spammer, Token Login Tool, Discord Account Manager, Cwelium">
     <title>Cwelium Raider | Advanced Discord Tool</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.7.2/css/all.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -983,6 +983,124 @@
                 transform: none !important;
             }
         }
+        .stat-item .fa-external-link-alt {
+            margin-left: 5px;
+            opacity: 0.5;
+            transition: var(--transition);
+        }
+        .stat-item:hover .fa-external-link-alt {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            -webkit-backdrop-filter: blur(5px);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s var(--transition-ease), visibility 0.3s var(--transition-ease);
+        }
+        .modal-overlay.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: var(--light);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-hover);
+            max-width: 700px;
+            width: 90%;
+            position: relative;
+            max-height: 85vh;
+            overflow-y: auto;
+            transform: scale(0.95) translateY(20px);
+            transition: transform 0.3s var(--transition-ease);
+        }
+        .modal-overlay.visible .modal-content {
+            transform: scale(1) translateY(0);
+        }
+        .dark-mode .modal-content {
+            background: #252536;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+        }
+        .dark-mode .modal-header {
+            border-bottom-color: rgba(255,255,255,0.1);
+        }
+        .modal-header h2 {
+            margin: 0;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+        .modal-close {
+            font-size: 2.5rem;
+            font-weight: 300;
+            line-height: 1;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: var(--gray);
+            transition: var(--transition);
+            padding: 0;
+        }
+        .modal-close:hover {
+            color: var(--accent);
+            transform: rotate(90deg);
+        }
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        .feature-list li {
+            display: flex;
+            align-items: center;
+            padding: 0.75rem;
+            background: rgba(108, 99, 255, 0.05);
+            border-radius: 8px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        .dark-mode .feature-list li {
+            background: rgba(108, 99, 255, 0.1);
+        }
+        .feature-list li:hover {
+            background: rgba(108, 99, 255, 0.1);
+            transform: translateX(5px);
+            color: var(--primary);
+        }
+        .dark-mode .feature-list li:hover {
+            background: rgba(108, 99, 255, 0.2);
+        }
+        .feature-list li i {
+            color: var(--primary);
+            margin-right: 1rem;
+            width: 20px;
+            text-align: center;
+        }
+        body.modal-open {
+            overflow: hidden;
+        }
     </style>
 </head>
 <body>
@@ -1048,9 +1166,9 @@
                                 <div class="stat-number">29</div>
                                 <div class="stat-text">Custom Colors</div>
                             </div>
-                            <div class="stat-item">
+                            <div class="stat-item" id="features-trigger" style="cursor: pointer;">
                                 <div class="stat-number">20+</div>
-                                <div class="stat-text">Built-in Features</div>
+                                <div class="stat-text">Built-in Features <i class="fas fa-external-link-alt fa-xs"></i></div>
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">v9</div>
@@ -1226,6 +1344,40 @@
             </div>
         </section>
     </main>
+
+    <div class="modal-overlay" id="features-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Full Feature List</h2>
+                <button class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <ul class="feature-list">
+                    <li><i class="fas fa-sign-in-alt"></i> Joiner</li>
+                    <li><i class="fas fa-sign-out-alt"></i> Leaver</li>
+                    <li><i class="fas fa-bullhorn"></i> Spammer</li>
+                    <li><i class="fas fa-robot"></i> Token Checker</li>
+                    <li><i class="far fa-smile"></i> Emoji Reaction</li>
+                    <li><i class="fas fa-stream"></i> Token Formatter</li>
+                    <li><i class="fas fa-mouse-pointer"></i> Button Clicker</li>
+                    <li><i class="fas fa-check-square"></i> Accept Rules</li>
+                    <li><i class="fas fa-server"></i> Guild Checker</li>
+                    <li><i class="fas fa-user-friends"></i> Friend Spammer</li>
+                    <li><i class="fas fa-circle"></i> Onliner</li>
+                    <li><i class="fas fa-volume-up"></i> Soundboard Spam</li>
+                    <li><i class="fas fa-user-edit"></i> Nickname Changer</li>
+                    <li><i class="fas fa-comments"></i> Thread Spammer</li>
+                    <li><i class="fas fa-keyboard"></i> Typer</li>
+                    <li><i class="fas fa-phone-alt"></i> Call Spammer</li>
+                    <li><i class="fas fa-address-card"></i> Bio Changer</li>
+                    <li><i class="fas fa-microphone"></i> Voice Joiner</li>
+                    <li><i class="fas fa-tasks"></i> Onboarding Bypass</li>
+                    <li><i class="fas fa-paper-plane"></i> DM Spammer</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="container">
             <p id="copyright">&copy; 2024 Cwelium Raider. All Rights Reserved.</p>
@@ -1472,6 +1624,37 @@
             document.addEventListener('selectstart', function(e) {
                 e.preventDefault();
             });
+
+            const featuresTrigger = document.getElementById('features-trigger');
+            const modalOverlay = document.getElementById('features-modal');
+            const closeModalBtn = document.getElementById('modal-close-btn');
+
+            if (featuresTrigger && modalOverlay && closeModalBtn) {
+                const openModal = () => {
+                    modalOverlay.classList.add('visible');
+                    document.body.classList.add('modal-open');
+                };
+
+                const closeModal = () => {
+                    modalOverlay.classList.remove('visible');
+                    document.body.classList.remove('modal-open');
+                };
+
+                featuresTrigger.addEventListener('click', openModal);
+                closeModalBtn.addEventListener('click', closeModal);
+
+                modalOverlay.addEventListener('click', (e) => {
+                    if (e.target === modalOverlay) {
+                        closeModal();
+                    }
+                });
+
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape' && modalOverlay.classList.contains('visible')) {
+                        closeModal();
+                    }
+                });
+            }
         });
     </script>
 </body>
