@@ -170,7 +170,7 @@
             font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.67, 0.1, 0.41, 0.9);
         }
         .nav-links a::after {
             content: '';
@@ -180,7 +180,7 @@
             width: 0;
             height: 2px;
             background: var(--primary);
-            transition: var(--transition);
+            transition: all 0.3s cubic-bezier(0.67, 0.1, 0.41, 0.9);
             border-radius: 1px;
         }
         .nav-links a:hover {
@@ -609,7 +609,7 @@
             box-shadow: var(--shadow);
             text-align: center;
             border: 1px solid rgba(0, 0, 0, 0.05);
-            transition: var(--transition);
+            transition: all 0.8s var(--transition-ease);
             transform: translateY(30px);
             opacity: 0;
         }
@@ -655,9 +655,9 @@
             padding: 2rem;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
-            transition: var(--transition);
+            transition: all 0.8s var(--transition-ease);
             border: 1px solid rgba(0, 0, 0, 0.05);
-            transform: translateY(0);
+            transform: translateY(30px);
             opacity: 0;
             margin: 1rem;
             -ms-flex: 1 1 300px;
