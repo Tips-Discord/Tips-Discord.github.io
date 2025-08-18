@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cwelium Raider | Advanced Discord Tool</title>
+    <title>Cwelium Raider</title>
     <meta name="description" content="Cwelium Raider - Advanced Discord Automation Tool with Multi-threading, Proxy Support, and Raid Features">
     <meta name="keywords" content="Discord Raider, Discord Raiding Tool, Discord Automation, Discord Bot, Discord Tool, Multi-threading, Proxy Support, Token Checker, Mass DM, Server Joiner, Discord Spammer, Server Nuker, Discord Nuke Bot, Mass Mention, Channel Spammer, Voice Chat Spammer, Discord Script, Multithreaded Discord Tool, HTTP Proxy, HTTPS Proxy, SOCKS5 Proxy, Request-based Raider, Discord API v9, High Performance Discord Tool, Fast Discord Raider, Token Verifier, Token Validator, Token Manager, Auto Joiner, Invite Joiner, Server Leaver, Mass Friend Request, Reaction Adder, Nickname Changer, Profile Changer, PFP Changer, HypeSquad Changer, Open Source Discord Tool, Free Discord Raider, GitHub Project, Cwelium Raider, Discord Security Tool, Discord Stress Testing, Discord Selfbot, User Bot Utility, Bulk DM, Batch Server Join, Discord Flooder, Automated Discord Actions, Discord Utility, High-Speed Spammer, Token Login Tool, Discord Account Manager, Cwelium">
     <meta name="theme-color" content="#4a40c8">
     <link rel="canonical" href="https://tips-discord.github.io/Cwelium/">
 
-    <meta property="og:title" content="Cwelium Raider | Advanced Discord Tool">
+    <meta property="og:title" content="Cwelium Raider">
     <meta property="og:description" content="A fully request-based Discord raiding tool with powerful automation features, multi-threading, and proxy support — designed for speed, reliability, and flexibility.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://tips-discord.github.io/Cwelium/">
@@ -19,7 +19,7 @@
 
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://tips-discord.github.io/Cwelium/">
-    <meta name="twitter:title" content="Cwelium Raider | Advanced Discord Tool">
+    <meta name="twitter:title" content="Cwelium Raider">
     <meta name="twitter:description" content="A fully request-based Discord raiding tool with powerful automation features, multi-threading, and proxy support — designed for speed, reliability, and flexibility.">
     <meta name="twitter:image" content="https://raw.githubusercontent.com/Tips-Discord/Tips-Discord/refs/heads/main/image.png">
     <meta name="twitter:image:alt" content="Screenshot of the Cwelium Raider command-line interface">
@@ -148,7 +148,15 @@
         }
         @keyframes float {
             0% { transform: translateY(0px); }
-            50% { transform: translateY(-5px); }
+            10% { transform: translateY(-1.9px); }
+            20% { transform: translateY(-3.4px); }
+            30% { transform: translateY(-4.5px); }
+            40% { transform: translateY(-5px); }
+            50% { transform: translateY(-4.5px); }
+            60% { transform: translateY(-3.4px); }
+            70% { transform: translateY(-1.9px); }
+            80% { transform: translateY(0px); }
+            90% { transform: translateY(-0.5px); }
             100% { transform: translateY(0px); }
         }
         .nav-links {
@@ -307,18 +315,17 @@
             }
         }
         @keyframes pulse-effect {
-            0% {
-                opacity: 1;
-                filter: blur(1.5px);
-            }
-            50% {
-                opacity: 0.8;
-                filter: blur(3px);
-            }
-            100% {
-                opacity: 1;
-                filter: blur(1.5px);
-            }
+            0% { opacity: 1; filter: blur(1.5px); }
+            10% { opacity: 0.98; filter: blur(1.8px); }
+            20% { opacity: 0.95; filter: blur(2.1px); }
+            30% { opacity: 0.90; filter: blur(2.4px); }
+            40% { opacity: 0.85; filter: blur(2.7px); }
+            50% { opacity: 0.8; filter: blur(3px); }
+            60% { opacity: 0.85; filter: blur(2.7px); }
+            70% { opacity: 0.90; filter: blur(2.4px); }
+            80% { opacity: 0.95; filter: blur(2.1px); }
+            90% { opacity: 0.98; filter: blur(1.8px); }
+            100% { opacity: 1; filter: blur(1.5px); }
         }
         .hero p {
             font-size: 1.2rem;
@@ -766,7 +773,7 @@
         .qa-question i {
             margin-right: 0.8rem;
             font-size: 1.2rem;
-            transition: transform var(--transition-speed) var(--transition-ease);
+            transition: transform 0.5s cubic-bezier(0.66, 0.04, 0.36, 0.92);
         }
         .qa-question:hover i {
             transform: scale(1.2);
@@ -786,7 +793,7 @@
             font-size: 1rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.5s var(--transition-ease), padding 0.5s var(--transition-ease), opacity 0.5s var(--transition-ease);
+            transition: max-height 0.5s cubic-bezier(0.66, 0.04, 0.36, 0.92), padding 0.5s cubic-bezier(0.66, 0.04, 0.36, 0.92), opacity 0.5s cubic-bezier(0.66, 0.04, 0.36, 0.92);
             opacity: 0;
             padding: 0 2rem;
         }
