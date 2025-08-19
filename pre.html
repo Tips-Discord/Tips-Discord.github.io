@@ -137,27 +137,11 @@
         .logo i {
             margin-right: 0.5rem;
         }
-        .logo:hover i.fas.fa-terminal {
-            animation: float 3s ease-in-out infinite;
-        }
         .logo-icon-hovered {
             font-weight: 800;
             font-style: normal;
             display: inline-block;
             margin-right: 0.5rem;
-        }
-        @keyframes float {
-            0% { transform: translateY(0px); }
-            10% { transform: translateY(-1.9px); }
-            20% { transform: translateY(-3.4px); }
-            30% { transform: translateY(-4.5px); }
-            40% { transform: translateY(-5px); }
-            50% { transform: translateY(-4.5px); }
-            60% { transform: translateY(-3.4px); }
-            70% { transform: translateY(-1.9px); }
-            80% { transform: translateY(0px); }
-            90% { transform: translateY(-0.5px); }
-            100% { transform: translateY(0px); }
         }
         .nav-links {
             display: flex;
@@ -1505,7 +1489,7 @@
                     if (!targetElement) return;
 
                     const headerHeight = header ? header.offsetHeight : 0;
-                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight - 20;
+                    const offsetTop = targetElement.getBoundingClientRect().top + window.pageYOffset - headerHeight;
 
                     const startTime = performance.now();
                     const startScroll = window.pageYOffset;
