@@ -37,7 +37,7 @@
             --light: #f8f9fa;
             --gray: #6a6a80;
             --transition-speed: 0.4s;
-            --transition-ease: cubic-bezier(0.25, 0.8, 0.25, 1);
+            --transition-ease: cubic-bezier(0.23, 1, 0.32, 1);
             --transition: all var(--transition-speed) var(--transition-ease);
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             --shadow-hover: 0 15px 35px rgba(0, 0, 0, 0.12);
@@ -104,10 +104,13 @@
             top: 0;
             width: 100%;
             z-index: 1000;
-            padding: 1.5rem 0;
+            padding: 1.2rem 0;
             transition: padding var(--transition-speed) var(--transition-ease), background-color var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease), transform var(--transition-speed) var(--transition-ease);
-            -webkit-backdrop-filter: blur(15px);
-            backdrop-filter: blur(15px);
+            backdrop-filter: blur(25px) saturate(200%);
+            -webkit-backdrop-filter: blur(25px) saturate(200%);
+            background-color: rgba(17, 25, 40, 0.54);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.125);
             background: rgba(255, 255, 255, 0.8);
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
             transform: translateY(0);
@@ -147,7 +150,7 @@
             display: flex;
             list-style: none;
         }
-        .nav-links li { margin: 0 1.5rem; }
+        .nav-links li { margin: 0 1.2rem; }
         .nav-links a {
             text-decoration: none;
             color: var(--dark);
@@ -264,7 +267,7 @@
             margin-bottom: 1rem;
             line-height: 1.2;
             opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.25, 0.8, 0.25, 1) forwards 0.2s;
+            animation: fadeInUp 0.8s var(--transition-ease) forwards 0.2s;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
         }
         .dark-mode .hero h1 {
@@ -317,7 +320,7 @@
             color: var(--gray);
             line-height: 1.7;
             opacity: 0;
-            animation: fadeInUp 0.8s forwards 0.4s;
+            animation: fadeInUp 0.8s var(--transition-ease) forwards 0.4s;
         }
         .hero-buttons {
             display: flex;
@@ -331,7 +334,7 @@
         .hero-image {
             flex: 0 1 80%;
             opacity: 0;
-            animation: fadeInRight 1s forwards 0.6s;
+            animation: fadeInRight 1s var(--transition-ease) forwards 0.6s;
             perspective: 1500px;
         }
         .hero-image img {
@@ -351,12 +354,12 @@
         .btn {
             display: inline-block;
             padding: 1rem 2rem;
-            background: var(--primary);
+            background: linear-gradient(45deg, var(--accent), var(--secondary));
             color: white;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.4s ease;
             will-change: transform, box-shadow;
             border: none;
             cursor: pointer;
@@ -381,6 +384,7 @@
         .btn:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: var(--shadow-hover);
+            background-position: right center;
         }
         .btn:active {
             transform: translateY(-2px) scale(0.98);
@@ -402,7 +406,7 @@
             padding: 6rem 0;
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+            transition: opacity 0.8s var(--transition-ease), transform 0.8s var(--transition-ease);
         }
         section.visible {
             opacity: 1;
@@ -411,7 +415,7 @@
         .skill-card {
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow var(--transition-speed) var(--transition-ease), transform var(--transition-speed) var(--transition-ease);
+            transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease), transform var(--transition-speed) var(--transition-ease);
         }
         .skill-card.visible {
             opacity: 1;
@@ -422,7 +426,7 @@
             margin-bottom: 4rem;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease);
         }
         .section-title.visible {
             opacity: 1;
@@ -455,9 +459,9 @@
         .about-content {
             display: -ms-grid;
             display: grid;
-            -ms-grid-columns: 1fr 3rem 1fr;
+            -ms-grid-columns: 1fr 2rem 1fr;
             grid-template-columns: 1fr 1fr;
-            gap: 3rem;
+            gap: 2rem;
             -ms-flex-align: center;
             align-items: center;
         }
@@ -469,7 +473,7 @@
             transform: translateX(0);
             transition: transform 0.6s ease, box-shadow 0.3s ease;
             opacity: 0;
-            animation: fadeInLeft 0.8s forwards;
+            animation: fadeInLeft 0.8s var(--transition-ease) forwards;
         }
         .about-img.visible {
             opacity: 1;
@@ -509,7 +513,7 @@
         }
         .about-text {
             opacity: 0;
-            animation: fadeInRight 0.8s forwards;
+            animation: fadeInRight 0.8s var(--transition-ease) forwards;
         }
         .about-text.visible {
             opacity: 1;
@@ -523,13 +527,13 @@
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             opacity: 0;
-            animation: fadeInUp 0.6s forwards 0.2s;
+            animation: fadeInUp 0.6s var(--transition-ease) forwards 0.2s;
         }
         .about-text p {
             margin-bottom: 1.5rem;
             color: var(--gray);
             opacity: 0;
-            animation: fadeInUp 0.6s forwards 0.4s;
+            animation: fadeInUp 0.6s var(--transition-ease) forwards 0.4s;
         }
         .stats {
             display: grid;
@@ -537,12 +541,13 @@
             gap: 1.5rem;
             margin-top: 2rem;
             align-items: end;
+            justify-items: center;
         }
         .stat-item {
             text-align: center;
             transition: transform 0.3s ease;
             opacity: 0;
-            animation: fadeInUp 0.5s forwards;
+            animation: fadeInUp 0.5s var(--transition-ease) forwards;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -562,7 +567,7 @@
             color: var(--gray);
             font-size: 0.9rem;
             opacity: 0;
-            animation: fadeIn 0.5s forwards 1.2s;
+            animation: fadeIn 0.5s var(--transition-ease) forwards 1.2s;
         }
         .skills-container {
             display: flex;
@@ -684,11 +689,11 @@
             font-size: 1.3rem;
             font-weight: 600;
             opacity: 0;
-            animation: fadeIn 0.4s forwards;
+            animation: fadeIn 0.4s var(--transition-ease) forwards;
         }
         .skill-card p {
             opacity: 0;
-            animation: fadeIn 0.4s forwards 0.1s;
+            animation: fadeIn 0.4s var(--transition-ease) forwards 0.1s;
         }
         .qa-container {
             max-width: 800px;
@@ -700,7 +705,7 @@
             border: 1px solid rgba(0, 0, 0, 0.05);
             opacity: 0;
             transform: translateY(30px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow var(--transition-speed) var(--transition-ease);
+            transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
         }
         .qa-container.visible {
             opacity: 1;
@@ -715,7 +720,7 @@
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
             opacity: 0;
             transform: translateX(-20px);
-            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+            transition: opacity 0.5s var(--transition-ease), transform 0.5s var(--transition-ease);
         }
         .qa-item:last-child {
             margin-bottom: 0;
@@ -736,7 +741,7 @@
             font-weight: 600;
             color: var(--secondary);
             margin-bottom: 0;
-            padding: 1.5rem 0;
+            padding: 1.25rem 0;
             display: flex;
             -ms-flex-align: center;
             align-items: center;
@@ -799,7 +804,7 @@
             margin-bottom: 3rem;
             opacity: 0;
             transform: translateY(20px);
-            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+            transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease);
         }
         .qa-header.visible {
             opacity: 1;
@@ -812,7 +817,7 @@
             max-width: 600px;
             margin: 0 auto;
             opacity: 0;
-            animation: fadeIn 0.6s forwards 0.2s;
+            animation: fadeIn 0.6s var(--transition-ease) forwards 0.2s;
         }
         .contact-container {
             display: flex;
@@ -821,7 +826,7 @@
             margin: -1.5rem;
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
+            gap: 2rem;
         }
         @supports (display: grid) {
             .contact-container {
@@ -833,7 +838,7 @@
             -ms-flex-direction: column;
             flex-direction: column;
             opacity: 0;
-            animation: fadeInLeft 0.8s forwards;
+            animation: fadeInLeft 0.8s var(--transition-ease) forwards;
             margin: 1.5rem;
             -ms-flex: 1 1 300px;
             flex: 1 1 300px;
@@ -881,14 +886,14 @@
         .contact-text h3 {
             margin-bottom: 0.3rem;
             opacity: 0;
-            animation: fadeInUp 0.4s forwards 0.1s;
+            animation: fadeInUp 0.4s var(--transition-ease) forwards 0.1s;
         }
         .contact-text p, .contact-text a {
             color: var(--gray);
             text-decoration: none;
             transition: var(--transition);
             opacity: 0;
-            animation: fadeInUp 0.4s forwards 0.2s;
+            animation: fadeInUp 0.4s var(--transition-ease) forwards 0.2s;
         }
         .contact-text a:hover { color: var(--primary); text-decoration: underline; }
         footer {
@@ -1011,11 +1016,12 @@
             .hero-buttons > .btn {
                 margin-right: 0;
                 margin-bottom: 1rem;
+                width: 80%;
+                max-width: 280px;
             }
             .hero-buttons > .btn:last-child {
                 margin-bottom: 0;
             }
-            .btn-outline { margin-left: 0; }
             .section-title h2 { font-size: 2rem; }
             .section-title, .section-title h2::after, .qa-header, .qa-header p, .qa-container, .qa-item, .skill-card, .skill-name, .skill-card p, .stat-item, .stat-number, .stat-text, .about-text h3, .about-text p {
                 opacity: 1 !important;
@@ -1631,7 +1637,7 @@
                     });
 
                     question.classList.toggle('active', isExpanded);
-                    question.setAttribute('aria-expanded', isExpanded);
+                    question.setAttribute('aria-expanded', 'isExpanded');
                     answer.classList.toggle('show', isExpanded);
                 });
             });
