@@ -76,6 +76,22 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
+        .skip-link {
+            position: absolute;
+            top: 0;
+            left: 0;
+            padding: 0.5rem 1rem;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            transform: translateY(-120%);
+            transition: transform 0.3s ease-out;
+            z-index: 10000;
+            border-bottom-right-radius: var(--radius);
+        }
+        .skip-link:focus {
+            transform: translateY(0);
+        }
         .dark-mode body {
             background-image: radial-gradient(circle at 10% 10%, rgba(var(--primary-rgb), 0.1), transparent 40%);
         }
@@ -366,7 +382,7 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-position 0.4s ease;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background-position 0.4s ease;
             will-change: transform, box-shadow;
             border: none;
             cursor: pointer;
@@ -648,10 +664,12 @@
             font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1rem;
+            transition: color 0.3s ease;
         }
         .why-card p {
             color: var(--gray);
             line-height: 1.6;
+            transition: color 0.3s ease;
         }
         .why-card:hover {
             transform: translateY(-10px);
@@ -661,6 +679,15 @@
         .why-card:hover i {
             transform: scale(1.2);
             color: var(--accent);
+        }
+        .why-card:hover h3 {
+            color: var(--primary);
+        }
+        .why-card:hover p {
+            color: var(--dark);
+        }
+        .dark-mode .why-card:hover p {
+            color: var(--darker);
         }
         @media (max-width: 768px) {
             .why-container {
@@ -1292,9 +1319,28 @@
             padding-left: 1.5rem;
             border-left: 3px solid var(--primary);
         }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            
+            .hero h1 span::after {
+                animation: none !important;
+                transform: scaleX(1) !important;
+                opacity: 1 !important;
+                filter: blur(1.5px) !important;
+            }
+        }
     </style>
 </head>
 <body>
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="container header-container">
             <a href="#" class="logo">
@@ -1317,7 +1363,7 @@
             </button>
         </div>
     </header>
-    <main role="main">
+    <main role="main" id="main-content">
         <section class="hero" id="home">
             <div class="container">
                 <div class="hero-content">
@@ -1601,7 +1647,7 @@
     </main>
 
     <div class="modal-overlay" id="features-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-content">
+        <div class="modal-content" tabindex="-1">
             <div class="modal-header">
                 <h2 id="modal-title">Full Feature List</h2>
                 <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
@@ -1874,7 +1920,7 @@
                 const openModal = () => {
                     modalOverlay.classList.add('visible');
                     document.body.classList.add('modal-open');
-                    closeModalBtn.focus();
+                    modalContent.focus();
                 };
 
                 const closeModal = () => {
