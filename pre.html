@@ -73,6 +73,8 @@
             opacity: 0;
             animation: fadeIn 0.8s forwards;
             background-image: radial-gradient(circle at 10% 10%, rgba(var(--primary-rgb), 0.05), transparent 40%);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
         .dark-mode body {
             background-image: radial-gradient(circle at 10% 10%, rgba(var(--primary-rgb), 0.1), transparent 40%);
@@ -590,6 +592,26 @@
         #why-cwelium {
             background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.03), rgba(232, 72, 104, 0.03));
         }
+        .why-card, .skill-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .why-card::before, .skill-card::before {
+            content: '';
+            position: absolute;
+            left: var(--mouse-x, 50%);
+            top: var(--mouse-y, 50%);
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle at center, rgba(var(--primary-rgb), 0.15), transparent 60%);
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+        }
+        .why-card:hover::before, .skill-card:hover::before {
+            opacity: 1;
+        }
         .why-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -928,16 +950,44 @@
             50% { transform: translateY(-10px); }
             100% { transform: translateY(0); }
         }
-        @keyframes tada {
-            from { transform: scale3d(1, 1, 1); }
-            10%, 20% { transform: scale3d(0.9, 0.9, 0.9) rotate3d(0, 0, 1, -3deg); }
-            30%, 50%, 70%, 90% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, 3deg); }
-            40%, 60%, 80% { transform: scale3d(1.1, 1.1, 1.1) rotate3d(0, 0, 1, -3deg); }
-            to { transform: scale3d(1, 1, 1); }
+        @keyframes subtle-bounce {
+            0% {
+                transform: translateY(0) scale(1);
+            }
+            10% {
+                transform: translateY(-2px) scale(1.02);
+            }
+            20% {
+                transform: translateY(-4px) scale(1.04);
+            }
+            30% {
+                transform: translateY(-5px) scale(1.06);
+            }
+            40% {
+                transform: translateY(-5px) scale(1.07);
+            }
+            50% {
+                transform: translateY(-5px) scale(1.08);
+            }
+            60% {
+                transform: translateY(-4px) scale(1.06);
+            }
+            70% {
+                transform: translateY(-2px) scale(1.04);
+            }
+            80% {
+                transform: translateY(0) scale(1.02);
+            }
+            90% {
+                transform: translateY(0) scale(1.01);
+            }
+            100% {
+                transform: translateY(0) scale(1);
+            }
         }
         .skill-card:hover .skill-icon i,
         .contact-item:hover .contact-icon i {
-            animation: tada 1s ease;
+            animation: subtle-bounce 0.8s ease-in-out;
         }
         @media (max-width: 992px) {
             .hero {
@@ -1236,11 +1286,9 @@
                                 <div class="stat-number">29</div>
                                 <div class="stat-text">Custom Colors</div>
                             </div>
-                            <div class="stat-item">
-                                <button type="button" id="features-trigger" class="stat-trigger-btn" aria-haspopup="dialog" aria-controls="features-modal">
-                                    <div class="stat-number">20+</div>
-                                    <div class="stat-text">Built-in Features <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></div>
-                                </button>
+                            <div class="stat-item stat-trigger-btn" id="features-trigger" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="features-modal">
+                                <div class="stat-number">20+</div>
+                                <div class="stat-text">Built-in Features <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></div>
                             </div>
                             <div class="stat-item">
                                 <div class="stat-number">v9</div>
@@ -1467,6 +1515,15 @@
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.why-card, .skill-card').forEach(card => {
+                card.addEventListener('mousemove', e => {
+                    const rect = card.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    card.style.setProperty('--mouse-x', `${x}px`);
+                    card.style.setProperty('--mouse-y', `${y}px`);
+                });
+            });
             const themeToggle = document.getElementById('themeToggle');
             const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
             const currentTheme = localStorage.getItem('theme');
