@@ -28,32 +28,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4a40c8;
-            --primary-rgb: 74, 64, 200;
-            --secondary: #3b33a0;
-            --accent: #e84868;
-            --dark: #1a1a2e;
-            --darker: #0d0d1a;
-            --light: #f8f9fa;
-            --gray: #6a6a80;
-            --transition-speed: 0.4s;
+            --primary: #5e54d8;
+            --primary-rgb: 94, 84, 216;
+            --secondary: #4a40c8;
+            --accent: #ff6b81;
+            --dark: #12121f;
+            --darker: #0a0a14;
+            --light: #fdfdff;
+            --gray: #6a6a88;
+            --transition-speed: 0.45s;
             --transition-ease: cubic-bezier(0.23, 1, 0.32, 1);
-            --transition: all var(--transition-speed) var(--transition-ease);
-            --shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
-            --shadow-hover: 0 12px 32px rgba(0, 0, 0, 0.1);
-            --radius: 12px;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 28px rgba(var(--primary-rgb), 0.15);
+            --radius: 16px;
         }
         .dark-mode {
-            --primary: #8982ff;
-            --primary-rgb: 137, 130, 255;
+            --primary: #8a82ff;
+            --primary-rgb: 138, 130, 255;
             --secondary: #6c63ff;
             --accent: #ff87a0;
-            --dark: #f8f9fa;
+            --dark: #f0f0f8;
             --darker: #e0e0e0;
-            --light: #1a1a2e;
-            --gray: #b0b0c0;
-            --shadow: 0 2px 4px rgba(0,0,0,0.02), 0 5px 15px rgba(0,0,0,0.06);
-            --shadow-hover: 0 4px 6px rgba(0,0,0,0.04), 0 10px 25px rgba(0,0,0,0.1);
+            --light: #161625;
+            --gray: #a0a0c0;
+            --shadow: 0 4px 15px rgba(0,0,0,0.1);
+            --shadow-hover: 0 10px 30px rgba(var(--primary-rgb), 0.2);
         }
         * {
             margin: 0;
@@ -227,7 +226,7 @@
         }
         .theme-toggle i {
             position: absolute;
-            transition: transform 0.4s var(--transition-ease), opacity 0.4s var(--transition-ease);
+            transition: transform 0.6s var(--transition-ease), opacity 0.6s var(--transition-ease);
         }
         .theme-toggle .fa-moon {
             transform: translateY(0) rotate(0deg);
@@ -409,7 +408,7 @@
         }
         .btn:hover {
             transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(var(--primary-rgb), 0.3);
+            box-shadow: 0 12px 35px rgba(var(--primary-rgb), 0.3);
         }
         .btn:hover::before {
             left: 100%;
@@ -717,6 +716,16 @@
             -ms-flex: 1 1 300px;
             flex: 1 1 300px;
             will-change: opacity, transform, box-shadow;
+        }
+        .skill-icon:hover, .contact-icon:hover {
+            transform: scale(1.15);
+            transition: transform 0.3s ease;
+        }
+        .skill-card, .why-card {
+            box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+        }
+        .skill-card:hover, .why-card:hover {
+            box-shadow: 0 12px 35px rgba(94,84,216,0.2);
         }
         @supports (display: grid) {
             .skill-card {
@@ -1718,12 +1727,14 @@
             const currentTheme = localStorage.getItem('theme');
 
             function setTheme(isDark) {
-                if (isDark) {
-                    document.body.classList.add('dark-mode');
-                } else {
-                    document.body.classList.remove('dark-mode');
-                }
-                themeToggle.setAttribute('aria-pressed', isDark);
+                setTimeout(() => {
+                    if (isDark) {
+                        document.body.classList.add('dark-mode');
+                    } else {
+                        document.body.classList.remove('dark-mode');
+                    }
+                    themeToggle.setAttribute('aria-pressed', isDark);
+                }, 10);
             }
 
             if (currentTheme) {
