@@ -31,9 +31,16 @@
         "name": "Cwelium Raider",
         "operatingSystem": "Windows, Linux, macOS",
         "applicationCategory": "UtilitySoftware",
+        "applicationSubCategory": "Automation",
         "url": "https://tips-discord.github.io/Cwelium/",
         "description": "An advanced, open-source, request-based Discord automation and raiding tool with multi-threading and proxy support.",
         "softwareVersion": "latest",
+        "author": {
+            "@type": "Organization",
+            "name": "Cwelium",
+            "url": "https://github.com/Tips-Discord/Cwelium"
+        },
+        "datePublished": "2024-05-01",
         "offers": {
             "@type": "Offer",
             "price": "0",
@@ -1470,7 +1477,7 @@
     <a href="#main-content" class="skip-link">Skip to main content</a>
     <header>
         <div class="container header-container">
-            <a href="#" class="logo" aria-label="Cwelium Raider Homepage">
+            <a href="#home" class="logo" aria-label="Cwelium Raider Homepage">
                 <i class="fas fa-terminal" aria-hidden="true"></i> Cwelium Raider
             </a>
             <nav aria-label="Main navigation">
@@ -1505,7 +1512,7 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://raw.githubusercontent.com/Tips-Discord/Tips-Discord/refs/heads/main/image.png" alt="Cwelium Raider Interface">
+                    <img src="https://raw.githubusercontent.com/Tips-Discord/Tips-Discord/refs/heads/main/image.png" alt="Screenshot of the Cwelium Raider command-line interface, showing a colorful menu of options.">
                 </div>
             </div>
         </section>
@@ -1638,7 +1645,7 @@
                             </button>
                         </h3>
                         <div class="qa-answer" id="qa-answer-1" role="region">
-                            Cwelium Raider uses <strong>Discord API v9</strong> for maximum compatibility.
+                            <p>Cwelium Raider uses <strong>Discord API v9</strong> for maximum compatibility.</p>
                         </div>
                     </div>
                     <div class="qa-item">
@@ -1649,7 +1656,7 @@
                             </button>
                         </h3>
                         <div class="qa-answer" id="qa-answer-2" role="region">
-                            You can use either <code>username:password@host:port</code> or <code>host:port</code>.
+                           <p>You can use either <code>username:password@host:port</code> or <code>host:port</code>.</p>
                         </div>
                     </div>
                     <div class="qa-item">
@@ -1660,7 +1667,7 @@
                             </button>
                         </h3>
                         <div class="qa-answer" id="qa-answer-3" role="region">
-                            Yes, this tool is designed for educational purposes only. Please ensure compliance with Discord's Terms of Service.
+                            <p>Yes, this tool is designed for educational purposes only. Please ensure compliance with Discord's Terms of Service.</p>
                         </div>
                     </div>
                     <div class="qa-item">
@@ -1671,7 +1678,7 @@
                             </button>
                         </h3>
                         <div class="qa-answer" id="qa-answer-4" role="region">
-                            Yes. The project is fully open-source, meaning you can inspect the code yourself to verify its safety. We value transparency above all else.
+                            <p>Yes. The project is fully open-source, meaning you can inspect the code yourself to verify its safety. We value transparency above all else.</p>
                         </div>
                     </div>
                     <div class="qa-item">
@@ -1682,7 +1689,7 @@
                             </button>
                         </h3>
                         <div class="qa-answer" id="qa-answer-5" role="region">
-                            Fork the repository on GitHub and submit pull requests.
+                           <p>Fork the repository on GitHub and submit pull requests.</p>
                         </div>
                     </div>
                 </div>
@@ -1749,22 +1756,22 @@
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fab fa-discord" aria-hidden="true"></i></div>
                             <div class="contact-text">
-                                <h3>Discord</h3>
-                                <a href="https://discord.gg/AQhmTHWRt4" target="_blank">discord.gg/AQhmTHWRt4</a>
+                                <h3>Discord Community</h3>
+                                <p><a href="https://discord.gg/AQhmTHWRt4" target="_blank">Join our official Discord server</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
                             <div class="contact-text">
-                                <h3>GitHub</h3>
-                                <a href="https://github.com/Tips-Discord/Cwelium" target="_blank">github.com/Tips-Discord/Cwelium</a>
+                                <h3>GitHub Repository</h3>
+                                <p><a href="https://github.com/Tips-Discord/Cwelium" target="_blank">View the source code on GitHub</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
                             <div class="contact-text">
-                                <h3>License</h3>
-                                <a href="https://github.com/Tips-Discord/Cwelium/blob/main/LICENSE" target="_blank">AGPL v3.0 + Additional Terms</a>
+                                <h3>License Information</h3>
+                                <p><a href="https://github.com/Tips-Discord/Cwelium/blob/main/LICENSE" target="_blank">Read the AGPL v3.0 License</a></p>
                             </div>
                         </div>
                     </div>
@@ -1774,7 +1781,7 @@
     </main>
 
     <div class="modal-overlay" id="features-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
-        <div class="modal-content" tabindex="-1">
+        <div class="modal-content" tabindex="-1" aria-labelledby="modal-title">
             <div class="modal-header">
                 <h2 id="modal-title">Full Feature List</h2>
                 <button type="button" class="modal-close" id="modal-close-btn" aria-label="Close modal">&times;</button>
@@ -1856,7 +1863,7 @@
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     const targetId = this.getAttribute('href');
-                    if (!targetId.startsWith('#') || targetId.length === 1) return;
+                    if (!targetId || !targetId.startsWith('#') || targetId.length === 1) return;
                         e.preventDefault();
                     const targetElement = document.querySelector(targetId);
                     if (!targetElement) return;
@@ -1986,7 +1993,7 @@
                     });
 
                     question.classList.toggle('active', isExpanded);
-                    question.setAttribute('aria-expanded', 'isExpanded');
+                    question.setAttribute('aria-expanded', isExpanded);
                     answer.classList.toggle('show', isExpanded);
                 });
             });
@@ -2053,15 +2060,18 @@
                 };
 
                 const trapFocus = (e) => {
-                    const focusableElements = modalContent.querySelectorAll(
-                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
-                    );
-                    const firstFocusableElement = focusableElements[0];
-                    const lastFocusableElement = focusableElements[focusableElements.length - 1];
-
                     if (e.key !== 'Tab') {
                         return;
                     }
+                    const focusableElements = modalContent.querySelectorAll(
+                        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                    );
+                    if (focusableElements.length === 0) {
+                        e.preventDefault();
+                        return;
+                    }
+                    const firstFocusableElement = focusableElements[0];
+                    const lastFocusableElement = focusableElements[focusableElements.length - 1];
 
                     if (e.shiftKey) {
                         if (document.activeElement === firstFocusableElement) {
@@ -2099,12 +2109,12 @@
             const sections = document.querySelectorAll('main section[id]');
             const navLinks = document.querySelectorAll('.nav-links a');
             const updateActiveNavLink = () => {
-                let current = '';
+                let current = 'home';
                 const headerHeight = header ? header.offsetHeight : 0;
 
                 sections.forEach(section => {
-                    const sectionTop = section.offsetTop - headerHeight - 450;
-                    if (pageYOffset >= sectionTop) {
+                    const sectionTop = section.offsetTop - headerHeight - 150;
+                    if (window.pageYOffset >= sectionTop) {
                         current = section.getAttribute('id');
                     }
                 });
