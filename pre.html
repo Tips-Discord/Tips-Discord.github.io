@@ -946,8 +946,7 @@
             flex-direction: column;
             opacity: 0;
             animation: fadeInLeft 0.8s var(--transition-ease) forwards;
-            margin: 1.5rem;
-            -ms-flex: 1 1 300px;
+            margin: 1.5rem auto;
             flex: 1 1 300px;
         }
         @supports (display: grid) {
@@ -956,7 +955,7 @@
             }
         }
         .contact-info > .contact-item:not(:last-child) {
-            margin-bottom: 1.5rem;
+            margin-bottom: 2.5rem;
         }
         .contact-info.visible {
             opacity: 1;
@@ -967,12 +966,29 @@
             -ms-flex-align: start;
             align-items: flex-start;
             transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+        .contact-info.visible .contact-item {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .contact-info.visible .contact-item:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+        .contact-info.visible .contact-item:nth-child(2) {
+            transition-delay: 0.2s;
+        }
+        .contact-info.visible .contact-item:nth-child(3) {
+            transition-delay: 0.3s;
         }
         .contact-item:hover { transform: translateX(8px); }
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: rgba(var(--primary-rgb), 0.1);
+            background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.15), rgba(var(--accent), 0.1));
+            box-shadow: 0 4px 8px rgba(var(--primary-rgb), 0.1);
             border-radius: 50%;
             display: flex;
             -ms-flex-align: center;
@@ -986,9 +1002,9 @@
             margin-right: 1rem;
         }
         .contact-item:hover .contact-icon {
-            transform: scale(1.15);
-            background: rgba(var(--primary-rgb), 0.2);
-            color: var(--accent);
+            transform: scale(1.2) rotate(5deg);
+            background: #0a0a14;
+            color: white;
         }
         .contact-text h3 {
             margin-bottom: 0.3rem;
@@ -1002,7 +1018,25 @@
             opacity: 0;
             animation: fadeInUp 0.4s var(--transition-ease) forwards 0.2s;
         }
-        .contact-text a:hover { color: var(--primary); text-decoration: underline; }
+        .contact-text a {
+            font-weight: 600;
+            position: relative;
+            display: inline-block;
+        }
+        .contact-text a:hover { color: var(--primary); text-decoration: none; }
+        .contact-text a::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 0;
+          width: 0;
+          height: 1px;
+          background: var(--primary);
+          transition: width 0.3s ease;
+        }
+        .contact-text a:hover::after {
+          width: 100%;
+        }
         footer {
             background: #f1f3f5;
             color: var(--gray);
@@ -1840,7 +1874,7 @@
             function staggerItems(entries, observer, className = 'visible') {
                 entries.forEach((entry, index) => {
                 if (entry.isIntersecting) {
-                    const delay = entry.target.classList.contains('skill-card') || entry.target.classList.contains('testimonial-card') ? index * 100 : index * 50;
+                    const delay = entry.target.classList.contains('skill-card') || entry.target.classList.contains('testimonial-card') || entry.target.classList.contains('contact-item') ? index * 100 : index * 50;
                     setTimeout(() => {
                         entry.target.classList.add(className);
                         if (className === 'visible') {
@@ -1860,13 +1894,10 @@
                 });
             }, observerOptions);
 
-            const skillCardObserver = new IntersectionObserver((entries) => {
-            staggerItems(entries, skillCardObserver);
+            const itemObserver = new IntersectionObserver((entries, observer) => {
+                staggerItems(entries, observer);
             }, observerOptions);
 
-            const qaItemObserver = new IntersectionObserver((entries) => {
-                staggerItems(entries, qaItemObserver);
-            }, observerOptions);
 
             const statItemObserver = new IntersectionObserver((entries, observer) => {
                 entries.forEach(entry => {
@@ -1884,18 +1915,12 @@
             document.querySelectorAll('section, .section-title, .qa-header, .qa-container, .contact-info, .about-img, .about-text').forEach(el => {
                 sectionObserver.observe(el);
             });
-            document.querySelectorAll('.skill-card').forEach(el => {
-                skillCardObserver.observe(el);
-            });
-            document.querySelectorAll('.qa-item').forEach(el => {
-                qaItemObserver.observe(el);
+            document.querySelectorAll('.skill-card, .qa-item, .why-card, .testimonial-card, .contact-item').forEach(el => {
+                itemObserver.observe(el);
             });
             document.querySelectorAll('.stat-item').forEach(el => {
                 el.style.animationPlayState = 'paused';
                 statItemObserver.observe(el);
-            });
-            document.querySelectorAll('.why-card, .testimonial-card').forEach(el => {
-                skillCardObserver.observe(el);
             });
 
             const qaQuestions = document.querySelectorAll('.qa-question');
