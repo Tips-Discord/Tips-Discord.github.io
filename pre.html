@@ -39,7 +39,7 @@
             --transition-speed: 0.45s;
             --transition-ease: cubic-bezier(0.23, 1, 0.32, 1);
             --shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            --shadow-hover: 0 10px 28px rgba(var(--primary-rgb), 0.15);
+            --shadow-hover: 0 8px 15px rgba(var(--primary-rgb), 0.1), 0 15px 40px rgba(var(--primary-rgb), 0.15);
             --radius: 16px;
         }
         .dark-mode {
@@ -74,6 +74,7 @@
             background-image: radial-gradient(circle at 10% 10%, rgba(var(--primary-rgb), 0.05), transparent 40%);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
         }
         .skip-link {
             position: absolute;
@@ -290,12 +291,23 @@
             opacity: 0;
             animation: fadeInUp 0.8s var(--transition-ease) forwards 0.2s;
             text-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(90deg, var(--dark), var(--accent), var(--dark));
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .dark-mode .hero h1 {
             text-shadow: 0 2px 20px rgba(var(--primary-rgb), 0.2);
+            background: linear-gradient(90deg, var(--dark), var(--accent), var(--dark));
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
         .hero h1 span {
             color: var(--primary);
+            -webkit-text-fill-color: var(--primary);
             position: relative;
             display: inline-block;
         }
@@ -361,7 +373,7 @@
         .hero-image img {
             width: 100%;
             border-radius: var(--radius);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.15), 0 0 60px rgba(var(--primary-rgb), 0.4);
+            box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.6), 0 20px 50px rgba(0,0,0,0.15), 0 0 60px rgba(var(--primary-rgb), 0.4);
             transform: rotateY(-15deg) rotateX(5deg) translate3d(0, -5px, 0) scale(1.05);
             transition: transform var(--transition-speed) var(--transition-ease), box-shadow var(--transition-speed) var(--transition-ease);
             border: 1px solid rgba(0, 0, 0, 0.05);
@@ -369,12 +381,12 @@
             will-change: transform, box-shadow;
         }
         .dark-mode .hero-image img {
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3), 0 0 60px rgba(var(--primary-rgb), 0.5);
+            box-shadow: inset 0 0 25px rgba(var(--primary-rgb), 0.2), 0 20px 50px rgba(0,0,0,0.3), 0 0 60px rgba(var(--primary-rgb), 0.5);
             border-color: rgba(255, 255, 255, 0.1);
         }
         .hero-image img:hover {
             transform: rotateY(0) rotateX(0) scale(1.05);
-            box-shadow: var(--shadow-hover), 0 0 76px rgba(var(--primary-rgb), 0.6);
+            box-shadow: inset 0 0 25px rgba(255, 255, 255, 0.6), var(--shadow-hover), 0 0 76px rgba(var(--primary-rgb), 0.6);
         }
         .btn {
             display: inline-block;
@@ -384,8 +396,8 @@
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background-position 0.4s ease;
-            will-change: transform, box-shadow;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, background-position 0.6s ease;
+            will-change: transform, box-shadow, background-position;
             border: none;
             cursor: pointer;
             box-shadow: var(--shadow);
@@ -394,8 +406,11 @@
             position: relative;
             overflow: hidden;
             z-index: 1;
+            background-size: 250% auto;
+            background-position: left center;
         }
         .btn::before {
+            background-size: 250% auto;
             content: '';
             position: absolute;
             top: 0;
@@ -403,12 +418,14 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background-position: left center;
             transition: left 0.6s ease;
             z-index: -1;
         }
         .btn:hover {
             transform: translateY(-5px) scale(1.05);
             box-shadow: 0 12px 35px rgba(var(--primary-rgb), 0.3);
+            background-position: right center;
         }
         .btn:hover::before {
             left: 100%;
@@ -422,6 +439,7 @@
             background: transparent;
             border: 2px solid var(--secondary);
             color: var(--secondary);
+            background-image: none;
         }
         .btn-outline:hover {
             background: var(--secondary);
@@ -432,6 +450,7 @@
             opacity: 0;
             transform: translateY(40px);
             transition: opacity 0.8s var(--transition-ease), transform 0.8s var(--transition-ease);
+            position: relative;
         }
         section.visible {
             opacity: 1;
@@ -617,10 +636,15 @@
         }
         #why-cwelium {
             background: linear-gradient(135deg, rgba(var(--primary-rgb), 0.03), rgba(232, 72, 104, 0.03));
+            overflow: hidden;
+        }
+        #features {
+            overflow: hidden;
         }
         .why-card, .skill-card, .testimonial-card {
             position: relative;
             overflow: hidden;
+            z-index: 1;
         }
         .why-card::before, .skill-card::before, .testimonial-card::before {
             content: '';
@@ -634,6 +658,7 @@
             opacity: 0;
             transition: opacity 0.4s ease;
             pointer-events: none;
+            z-index: -1;
         }
         .why-card:hover::before, .skill-card:hover::before, .testimonial-card:hover::before {
             opacity: 1;
@@ -681,7 +706,7 @@
             transition: color 0.3s ease;
         }
         .why-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-10px) scale(1.01);
             box-shadow: var(--shadow-hover);
             border-color: var(--primary);
         }
@@ -737,7 +762,7 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .skill-card:hover {
-            transform: translateY(-10px) scale(1.02);
+            transform: translateY(-10px) scale(1.01);
             box-shadow: var(--shadow-hover);
             border-color: rgba(var(--primary-rgb), 0.5);
         }
