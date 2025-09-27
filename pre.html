@@ -211,7 +211,7 @@
             font-weight: 500;
             position: relative;
             padding: 0.5rem 0;
-            transition: color 0.3s cubic-bezier(0.67, 0.1, 0.41, 0.9), transform 0.3s cubic-bezier(0.67, 0.1, 0.41, 0.9);
+            transition: color 0.3s var(--transition-ease), transform 0.3s var(--transition-ease);
         }
         .nav-links a::after {
             content: '';
@@ -221,7 +221,7 @@
             width: 0;
             height: 2px;
             background: var(--primary);
-            transition: width 0.3s cubic-bezier(0.67, 0.1, 0.41, 0.9);
+            transition: width 0.3s var(--transition-ease);
             border-radius: 1px;
         }
         .nav-links a:hover {
@@ -485,7 +485,7 @@
             padding: 6rem 0;
             opacity: 0;
             transform: translateY(40px);
-            transition: opacity 0.8s var(--transition-ease), transform 0.8s var(--transition-ease), background-color var(--transition-speed) var(--transition-ease);
+            transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease), background-color var(--transition-speed) var(--transition-ease);
             position: relative;
         }
         section.visible {
@@ -805,7 +805,7 @@
         .skill-card:hover {
             transform: translateY(-10px) scale(1.01);
             box-shadow: var(--shadow-hover);
-            border-color: rgba(var(--primary-rgb), 0.5);
+            border-color: var(--primary);
         }
         .skill-header {
             display: flex;
@@ -848,7 +848,7 @@
             border-radius: var(--radius);
             box-shadow: var(--shadow);
             padding: 2.5rem;
-            border: 1px solid rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 0, 0, 0.1);
             opacity: 0;
             transform: translateY(30px), translateY(0);
             will-change: transform, box-shadow;
@@ -1046,8 +1046,8 @@
         }
         .contact-item:hover .contact-icon {
             transform: scale(1.2) rotate(5deg);
-            background: #0a0a14;
-            color: white;
+            background: var(--darker);
+            color: var(--light);
         }
         .contact-text h3 {
             margin-bottom: 0.3rem;
