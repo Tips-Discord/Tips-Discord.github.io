@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark>
+<html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1040,6 +1040,7 @@
             transition: max-height 0.4s cubic-bezier(0.86, 0, 0.07, 1), padding 0.4s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.4s cubic-bezier(0.86, 0, 0.07, 1), color var(--transition-speed) var(--transition-ease);
             opacity: 0;
             padding: 0 2rem;
+            transform: translateY(-10px);
         }
         .qa-answer.show {
             max-height: 500px;
@@ -1547,7 +1548,46 @@
             border-left: 3px solid var(--primary);
             transition: color var(--transition-speed) var(--transition-ease), border-left-color var(--transition-speed) var(--transition-ease);
         }
-
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+            z-index: 999;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(100px);
+            transition: opacity 0.4s var(--transition-ease), 
+                        visibility 0.4s var(--transition-ease), 
+                        transform 0.4s var(--transition-ease),
+                        background-color var(--transition-speed) var(--transition-ease);
+            will-change: opacity, transform;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--secondary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-5px);
+        }
+        .back-to-top:active {
+            transform: translateY(-2px) scale(0.95);
+        }
+        
         @media (prefers-reduced-motion: reduce) {
             *,
             *::before,
@@ -1565,7 +1605,7 @@
                 filter: blur(1.5px) !important;
             }
         }
-
+        
         @media print {
             header,
             footer,
@@ -1573,7 +1613,7 @@
             .theme-toggle,
             .hero-image,
             .about-img,
-            .scroll-to-top {
+            .back-to-top {
                 display: none !important;
             }
 
@@ -1690,10 +1730,10 @@
                                 <div class="stat-number">29</div>
                                 <div class="stat-text">Custom Colors</div>
                             </div>
-                            <div class="stat-item stat-trigger-btn" id="features-trigger" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="features-modal">
-                                <div class="stat-number">20+</div>
-                                <div class="stat-text">Built-in Features <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></div>
-                            </div>
+                            <button type="button" class="stat-item stat-trigger-btn" id="features-trigger" aria-haspopup="dialog" aria-controls="features-modal">
+                                <span class="stat-number">20+</span>
+                                <span class="stat-text">Built-in Features <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></span>
+                            </button>
                             <div class="stat-item">
                                 <div class="stat-number">9</div>
                                 <div class="stat-text">Discord API version</div>
@@ -1709,48 +1749,48 @@
                     <h2>Core Features</h2>
                 </div>
                 <div class="skills-container" id="skillsContainer">
-                    <div class="skill-card">
+                    <article class="skill-card">
                         <div class="skill-header">
                             <div class="skill-icon"><i class="fas fa-user-plus" aria-hidden="true"></i></div>
-                            <div class="skill-name">Joiner</div>
+                            <h3 class="skill-name">Joiner</h3>
                         </div>
                         <p>Automatically join servers using invite links.</p>
-                    </div>
-                    <div class="skill-card">
+                    </article>
+                    <article class="skill-card">
                         <div class="skill-header">
                             <div class="skill-icon"><i class="fas fa-sign-out-alt" aria-hidden="true"></i></div>
-                            <div class="skill-name">Leaver</div>
+                            <h3 class="skill-name">Leaver</h3>
                         </div>
                         <p>Leave multiple servers instantly.</p>
-                    </div>
-                    <div class="skill-card">
+                    </article>
+                    <article class="skill-card">
                         <div class="skill-header">
                             <div class="skill-icon"><i class="fas fa-bullhorn" aria-hidden="true"></i></div>
-                            <div class="skill-name">Spammer</div>
+                            <h3 class="skill-name">Spammer</h3>
                         </div>
                         <p>Send messages at high speed with optional mass ping.</p>
-                    </div>
-                    <div class="skill-card">
+                    </article>
+                    <article class="skill-card">
                         <div class="skill-header">
                             <div class="skill-icon"><i class="fas fa-robot" aria-hidden="true"></i></div>
-                            <div class="skill-name">Token Checker</div>
+                            <h3 class="skill-name">Token Checker</h3>
                         </div>
                         <p>Verify and filter working Discord tokens.</p>
-                    </div>
-                    <div class="skill-card">
+                    </article>
+                    <article class="skill-card">
                         <div class="skill-header">
                             <div class="skill-icon"><i class="fas fa-comments" aria-hidden="true"></i></div>
-                            <div class="skill-name">Mass DM</div>
+                            <h3 class="skill-name">Mass DM</h3>
                         </div>
                         <p>Send direct messages to a large number of users quickly.</p>
-                    </div>
-                    <div class="skill-card">
+                    </article>
+                    <article class="skill-card">
                         <div class="skill-header">
                             <div class="skill-icon"><i class="fas fa-microphone" aria-hidden="true"></i></div>
-                            <div class="skill-name">Voice Tools</div>
+                            <h3 class="skill-name">Voice Tools</h3>
                         </div>
                         <p>Join, spam, or interact in voice channels automatically.</p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1761,21 +1801,21 @@
                     <h2>Why Choose Cwelium?</h2>
                 </div>
                 <div class="why-container">
-                    <div class="why-card">
+                    <article class="why-card">
                         <i class="fas fa-bolt" aria-hidden="true"></i>
                         <h3>Unmatched Performance</h3>
                         <p>Built with a fully request-based architecture for speed that UI-based tools can't match.</p>
-                    </div>
-                    <div class="why-card">
+                    </article>
+                    <article class="why-card">
                         <i class="fas fa-eye" aria-hidden="true"></i>
                         <h3>Total Transparency</h3>
                         <p>100% open-source. You can review every line of code on our GitHub. No secrets.</p>
-                    </div>
-                    <div class="why-card">
+                    </article>
+                    <article class="why-card">
                         <i class="fas fa-hand-holding-heart" aria-hidden="true"></i>
                         <h3>Completely Free, No Catch</h3>
                         <p>No premium tiers, no ads, no data selling. Powerful tools should be accessible to everyone.</p>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1851,7 +1891,7 @@
                     <h2>What Users Say</h2>
                 </div>
                 <div class="testimonials-container">
-                    <div class="testimonial-card">
+                    <article class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <i class="fas fa-user-secret" aria-hidden="true"></i>
@@ -1864,8 +1904,8 @@
                         <blockquote class="testimonial-quote">
                             "I honestly didn't expect the tool to be that good. Great work!"
                         </blockquote>
-                    </div>
-                    <div class="testimonial-card">
+                    </article>
+                    <article class="testimonial-card">
                         <div class="testimonial-header">
                             <div class="testimonial-avatar">
                                 <i class="fas fa-code" aria-hidden="true"></i>
@@ -1878,8 +1918,8 @@
                         <blockquote class="testimonial-quote">
                             "I have to say, the codebase is excellent."
                         </blockquote>
-                    </div>
-                    <div class="testimonial-card">
+                    </article>
+                    <article class="testimonial-card">
                         <div class="testimonial-header">
                              <div class="testimonial-avatar">
                                 <i class="fas fa-user-shield" aria-hidden="true"></i>
@@ -1892,7 +1932,7 @@
                         <blockquote class="testimonial-quote">
                             "Absolutely legitimate. I've been using it since the original Helium project was open-source, and the compiled version of Cwelium is even more powerful."
                         </blockquote>
-                    </div>
+                    </article>
                 </div>
             </div>
         </section>
@@ -1929,6 +1969,10 @@
             </div>
         </section>
     </main>
+
+    <button type="button" class="back-to-top" id="backToTopBtn" title="Go to top" aria-label="Go back to the top of the page">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
+    </button>
 
     <div class="modal-overlay" id="features-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
         <div class="modal-content" tabindex="-1" aria-labelledby="modal-title">
@@ -2301,6 +2345,28 @@
             };
             window.addEventListener('scroll', updateActiveNavLink);
             updateActiveNavLink();
+
+            const backToTopBtn = document.getElementById('backToTopBtn');
+            if (backToTopBtn) {
+                const scrollThreshold = 300; 
+
+                const handleScroll = () => {
+                    if (window.scrollY > scrollThreshold) {
+                        backToTopBtn.classList.add('visible');
+                    } else {
+                        backToTopBtn.classList.remove('visible');
+                    }
+                };
+
+                window.addEventListener('scroll', handleScroll, { passive: true });
+                
+                backToTopBtn.addEventListener('click', () => {
+                    window.scrollTo({
+                        top: 0,
+                        behavior: isReducedMotion ? 'auto' : 'smooth'
+                    });
+                });
+            }
         });
     </script>
 </body>
