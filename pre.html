@@ -225,13 +225,13 @@
             background: hsla(240, 26%, 12%, 0.65);
         }
         .scrolled {
-            box-shadow: 0 4px 15px hsla(0, 0%, 0%, 0.1);
+            box-shadow: 0 6px 20px hsla(0, 0%, 0%, 0.1);
             transform: translateY(0) !important;
             padding: 0.8rem 0;
             border-bottom-color: hsla(0, 0%, 0%, 0.05);
         }
         [data-theme="dark"] .scrolled {
-            box-shadow: 0 4px 20px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.2);
+            box-shadow: 0 6px 25px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.25);
             border-bottom-color: hsla(0, 0%, 100%, 0.1);
         }
         .header-container {
@@ -1068,14 +1068,19 @@
         }
         .qa-question.active {
             color: var(--accent);
+            background-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.05);
         }
         .qa-answer {
+            padding: 0 0.75rem;
             color: var(--gray);
             line-height: 1.7;
             font-size: 1rem;
             max-height: 0;
             overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.86, 0, 0.07, 1), padding 0.4s cubic-bezier(0.86, 0, 0.07, 1), opacity 0.4s cubic-bezier(0.86, 0, 0.07, 1), color var(--transition-speed);
+            transition: max-height 0.4s cubic-bezier(0.86, 0, 0.07, 1),
+                padding 0.4s cubic-bezier(0.86, 0, 0.07, 1),
+                opacity 0.4s cubic-bezier(0.86, 0, 0.07, 1),
+                transform 0.4s cubic-bezier(0.86, 0, 0.07, 1);
             opacity: 0;
             padding: 0 2rem;
             transform: translateY(-10px);
@@ -1083,10 +1088,18 @@
         .qa-answer.show {
             max-height: 500px;
             padding: 0 2rem 1.5rem 2rem;
+            transform: translateY(5px);
             opacity: 1;
         }
-        .qa-answer strong { color: var(--dark); font-weight: 600; transition: color var(--transition-speed); }
-        [data-theme="dark"] .qa-answer strong { color: var(--darker); }
+        .qa-answer strong { 
+            color: var(--dark); 
+            font-weight: 600; 
+            transition: color 
+            var(--transition-speed); 
+        }
+        [data-theme="dark"] .qa-answer strong { 
+            color: var(--darker);
+        }
         .qa-answer code {
             background: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.1);
             padding: 0.2rem 0.5rem;
@@ -1339,6 +1352,7 @@
             }
             .hero-image img {
                 transform: none;
+                animation: none;
             }
             .about-content { 
                 -ms-grid-columns: 1fr;
