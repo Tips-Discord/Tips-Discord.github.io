@@ -2,6 +2,12 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://site-assets.fontawesome.com; font-src 'self' https://fonts.gstatic.com https://site-assets.fontawesome.com; img-src 'self' https://raw.githubusercontent.com; connect-src 'self';">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cwelium - Advanced Discord Automation Tool with Multi-threading, Proxy Support, and Raid Features">
     <meta name="keywords" content="Discord Raider, Discord Raiding Tool, Discord Automation, Discord Tool, Token Checker, Mass DM, Joiner, Spammer, Request-based Raider, Discord API v9, High Performance Discord Tool, Fast Discord Raider, Auto Joiner, Invite Joiner, Server Leaver, Mass Friend Request, Reaction Adder, Nickname Changer, Profile Changer, PFP Changer, HypeSquad Changer, Open Source Discord Tool, Free Discord Raider, GitHub Project, Cwelium Raider, Discord Security Tool, Discord Stress Testing, Discord Selfbot, User Bot Utility, Bulk DM, Batch Server Join, Discord Flooder, Automated Discord Actions, Discord Utility, High-Speed Spammer, Token Login Tool, Discord Account Manager, Cwelium">
@@ -80,6 +86,7 @@
             --transition-fast: 0.2s;
             --transition-ease: cubic-bezier(0.65, 0, 0.35, 1);
             --transition-spring: cubic-bezier(0.5, 1.5, 0.5, 1);
+            --transition-springy: cubic-bezier(0.68, -0.55, 0.27, 1.55);
             
             --shadow-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.08);
             --shadow-hover-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.15);
@@ -97,8 +104,8 @@
             --light: hsl(240, 26%, 12%);
             --gray: hsl(240, 21%, 69%);
 
-            --shadow-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.08);
-            --shadow-hover-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.15);
+            --shadow-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.12);
+            --shadow-hover-color: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.22);
         }
         * {
             margin: 0;
@@ -219,6 +226,8 @@
             border-bottom-color: transparent;
             box-shadow: 0 2px 15px hsla(0, 0%, 0%, 0.05);
             transform: translateY(-100%);
+        }
+        body.page-loaded header {
             animation: slideDown 0.8s var(--transition-ease) 0.5s forwards;
         }
         [data-theme="dark"] header {
@@ -231,7 +240,7 @@
             border-bottom-color: hsla(0, 0%, 0%, 0.05);
         }
         [data-theme="dark"] .scrolled {
-            box-shadow: 0 6px 25px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.25);
+            box-shadow: 0 6px 25px var(--shadow-hover-color);
             border-bottom-color: hsla(0, 0%, 100%, 0.1);
         }
         .header-container {
@@ -401,9 +410,6 @@
             margin-bottom: 1rem;
             line-height: 1.2;
             opacity: 0;
-            animation: 
-                fadeInUp 0.8s var(--transition-ease) forwards 0.2s,
-                shimmer 29s linear infinite 1ms;
             text-shadow: 0 2px 15px hsla(0, 0%, 0%, 0.1);
             background: linear-gradient(90deg, var(--dark), var(--accent), var(--primary), var(--accent), var(--dark));
             background-size: 300% 100%;
@@ -413,6 +419,11 @@
             position: relative;
             overflow: hidden;
             transition: background var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out;
+        }
+        body.page-loaded .hero h1 {
+            animation: 
+                fadeInUp 0.8s var(--transition-ease) forwards 0.2s,
+                shimmer 29s linear infinite 1ms;
         }
         [data-theme="dark"] .hero h1 {
             text-shadow: 0 2px 20px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.2);
@@ -446,11 +457,13 @@
             transform: scaleX(0);
             filter: blur(1.5px);
             opacity: 1;
+            will-change: transform, filter;
+            transition: transform var(--transition-medium) ease, filter var(--transition-medium) ease, background var(--transition-speed) ease;
+        }
+        body.page-loaded .hero h1 span::after {
             animation: 
                 draw-underline 0.8s cubic-bezier(0.19, 1, 0.22, 1) 0.6s forwards,
                 pulse-effect 3s ease-in-out 1.5s infinite;
-            will-change: transform, filter;
-            transition: transform var(--transition-medium) ease, filter var(--transition-medium) ease, background var(--transition-speed) ease;
         }
         @keyframes draw-underline {
             0% {
@@ -481,6 +494,8 @@
             color: var(--gray);
             line-height: 1.7;
             opacity: 0;
+        }
+        body.page-loaded .hero p {
             animation: fadeInUp 0.8s var(--transition-ease) forwards 0.4s;
         }
         .hero-sub-p {
@@ -489,11 +504,15 @@
             margin-top: -1rem;
             margin-bottom: 2rem;
             opacity: 0;
+        }
+        body.page-loaded .hero-sub-p {
             animation: fadeInUp 0.8s var(--transition-ease) forwards 0.5s;
         }
         .hero-buttons {
             display: flex;
             opacity: 0;
+        }
+        body.page-loaded .hero-buttons {
             animation: fadeInUp 0.8s var(--transition-ease) forwards 0.6s;
         }
         .hero-buttons > .btn {
@@ -505,8 +524,10 @@
         .hero-image {
             flex: 0 1 80%;
             opacity: 0;
-            animation: slideInFromBottomRight 1.2s var(--transition-ease) forwards 0.6s;
             perspective: 1500px;
+        }
+        body.page-loaded .hero-image {
+            animation: slideInFromBottomRight 1.2s var(--transition-ease) forwards 0.6s;
         }
         .hero-image img {
             width: 100%;
@@ -551,11 +572,15 @@
             position: absolute;
             border-radius: 50%;
             transform: scale(0);
-            animation: ripple-effect 0.8s cubic-bezier(0.22, 1, 0.36, 1);
-            background-color: hsla(0, 0%, 100%, 0.7);
+            animation: ripple-effect 0.6s linear;
+            background-color: hsla(0, 0%, 100%, 0.4);
             pointer-events: none;
         }
         @keyframes ripple-effect {
+            from {
+                transform: scale(0);
+                opacity: 0.4;
+            }
             to {
                 transform: scale(4);
                 opacity: 0;
@@ -681,12 +706,11 @@
             transform: translateX(0) translateZ(0);
             transition: transform 0.6s ease, box-shadow 0.3s ease;
             opacity: 0;
-            animation: fadeInLeft 0.8s var(--transition-ease) forwards;
             will-change: transform, opacity, box-shadow;
         }
         .about-img.visible {
             opacity: 1;
-            animation: none;
+            animation: fadeInLeft 0.8s var(--transition-ease) forwards;
         }
         @keyframes fadeInLeft {
             from { opacity: 0; transform: translateX(-30px); }
@@ -723,13 +747,12 @@
         }
         .about-text {
             opacity: 0;
-            animation: fadeInRight 0.8s var(--transition-ease) forwards;
             will-change: transform, opacity;
             transform: translateZ(0);
         }
         .about-text.visible {
             opacity: 1;
-            animation: none;
+            animation: fadeInRight 0.8s var(--transition-ease) forwards;
         }
         @keyframes fadeInRight {
             from { opacity: 0; transform: translateX(30px); }
@@ -1055,7 +1078,8 @@
         .qa-question i {
             margin-right: 0.8rem;
             font-size: 1.2rem;
-            transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+            transition: transform 0.5s var(--transition-springy);
+            will-change: transform;
         }
         .qa-question:hover i {
             transform: scale(1.2);
@@ -1161,14 +1185,13 @@
             -ms-flex-direction: column;
             flex-direction: column;
             opacity: 0;
+        }
+        .contact-info.visible {
+            opacity: 1;
             animation: fadeInLeft 0.8s var(--transition-ease) forwards;
         }
         .contact-info > .contact-item:not(:last-child) {
             margin-bottom: 2rem;
-        }
-        .contact-info.visible {
-            opacity: 1;
-            animation: none;
         }
         .contact-item {
             display: flex;
@@ -1466,7 +1489,7 @@
             z-index: 2000;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s var(--transition-ease), visibility 0.3s var(--transition-ease);
+            transition: opacity 0.3s ease, visibility 0.3s ease;
         }
         .modal-overlay.visible {
             opacity: 1;
@@ -1487,8 +1510,8 @@
             transform: scale(0.95) translateY(20px);
             opacity: 0;
             transition: 
-                transform 0.3s var(--transition-ease),
-                opacity 0.3s var(--transition-ease),
+                transform 0.4s var(--transition-springy),
+                opacity 0.3s ease,
                 background-color var(--transition-speed),
                 border-color var(--transition-speed);
             border: 1px solid hsla(0, 0%, 100%, 0.2);
@@ -1793,8 +1816,12 @@
                     </p>
                     <p class="hero-sub-p">100% Free & Open Source.</p>
                     <div class="hero-buttons">
-                        <a href="https://github.com/Tips-Discord/Cwelium/releases/latest" class="btn" target="_blank"><i class="fas fa-download" aria-hidden="true"></i> Download</a>
-                        <a href="https://github.com/Tips-Discord/Cwelium" class="btn btn-outline" target="_blank"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+                        <a href="https://github.com/Tips-Discord/Cwelium/releases/latest" class="btn" id="download-btn" target="_blank" rel="noopener noreferrer">
+                            <span class="btn-text"><i class="fas fa-download" aria-hidden="true"></i> Download</span>
+                        </a>
+                        <a href="https://github.com/Tips-Discord/Cwelium" class="btn btn-outline"  id="github-btn" target="_blank" rel="noopener noreferrer">
+                           <span class="btn-text"><i class="fab fa-github" aria-hidden="true"></i> GitHub</span>
+                        </a>
                     </div>
                 </div>
                 <div class="hero-image">
@@ -1826,10 +1853,10 @@
                                 <div class="stat-number">29</div>
                                 <div class="stat-text">Custom Colors</div>
                             </div>
-                            <div class="stat-item stat-trigger-btn" id="features-trigger" role="button" tabindex="0" aria-haspopup="dialog" aria-controls="features-modal">
-                                <div class="stat-number">20+</div>
-                                <div class="stat-text">Built-in Features <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></div>
-                            </div>
+                            <button type="button" class="stat-item stat-trigger-btn" id="features-trigger" aria-haspopup="dialog" aria-controls="features-modal" aria-label="View all 20+ built-in features">
+                                <span class="stat-number">20+</span>
+                                <span class="stat-text">Built-in Features <i class="fas fa-external-link-alt fa-xs" aria-hidden="true"></i></span>
+                            </button>
                             <div class="stat-item">
                                 <div class="stat-number">9</div>
                                 <div class="stat-text">Discord API version</div>
@@ -2047,21 +2074,21 @@
                             <div class="contact-icon"><i class="fab fa-discord" aria-hidden="true"></i></div>
                             <div class="contact-text">
                                 <h3>Discord Community</h3>
-                                <p><a href="https://discord.gg/AQhmTHWRt4" target="_blank">Join our official Discord server</a></p>
+                                <p><a href="https://discord.gg/AQhmTHWRt4" target="_blank" rel="noopener noreferrer">Join our official Discord server</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fab fa-github" aria-hidden="true"></i></div>
                             <div class="contact-text">
                                 <h3>GitHub Repository</h3>
-                                <p><a href="https://github.com/Tips-Discord/Cwelium" target="_blank">View the source code on GitHub</a></p>
+                                <p><a href="https://github.com/Tips-Discord/Cwelium" target="_blank" rel="noopener noreferrer">View the source code on GitHub</a></p>
                             </div>
                         </div>
                         <div class="contact-item">
                             <div class="contact-icon"><i class="fas fa-file-contract" aria-hidden="true"></i></div>
                             <div class="contact-text">
                                 <h3>License Information</h3>
-                                <p><a href="https://github.com/Tips-Discord/Cwelium/blob/main/LICENSE" target="_blank">Read the AGPL v3.0 License</a></p>
+                                <p><a href="https://github.com/Tips-Discord/Cwelium/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">Read the AGPL v3.0 License</a></p>
                             </div>
                         </div>
                     </div>
@@ -2073,8 +2100,8 @@
     <button type="button" class="back-to-top" id="backToTopBtn" title="Go to top" aria-label="Go back to the top of the page">
         <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
-
-    <div class="modal-overlay" id="features-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    
+    <div class="modal-overlay" id="features-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-live="polite">
         <div class="modal-content" tabindex="-1" aria-labelledby="modal-title">
             <div class="modal-header">
                 <h2 id="modal-title">Full Feature List</h2>
@@ -2114,13 +2141,15 @@
             </a>
             <p id="copyright">&copy; 2024 Cwelium. All Rights Reserved.</p>
             <div class="footer-socials">
-                <a href="https://github.com/Tips-Discord/Cwelium" target="_blank" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
-                <a href="https://discord.gg/AQhmTHWRt4" target="_blank" aria-label="Discord Community"><i class="fab fa-discord"></i></a>
+                <a href="https://github.com/Tips-Discord/Cwelium" target="_blank" rel="noopener noreferrer" aria-label="GitHub Repository"><i class="fab fa-github"></i></a>
+                <a href="https://discord.gg/AQhmTHWRt4" target="_blank" rel="noopener noreferrer" aria-label="Discord Community"><i class="fab fa-discord"></i></a>
             </div>
         </div>
     </footer>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
+            document.body.classList.add('page-loaded');
+
             if ('scrollRestoration' in history) {
                 history.scrollRestoration = 'manual';
             }
