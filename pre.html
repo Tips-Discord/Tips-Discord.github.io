@@ -6,7 +6,6 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://site-assets.fontawesome.com; font-src 'self' https://fonts.gstatic.com https://site-assets.fontawesome.com; img-src 'self' https://raw.githubusercontent.com; connect-src 'self';">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Cwelium - Advanced Discord Automation Tool with Multi-threading, Proxy Support, and Raid Features">
@@ -128,6 +127,7 @@
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
+            background-blend-mode: screen;
         }
         body::before {
             content: '';
@@ -136,10 +136,12 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                radial-gradient(circle at 20% 80%, hsla(241, 79%, 61%, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, hsla(262, 89%, 66%, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, hsla(332, 82%, 60%, 0.1) 0%, transparent 50%);
+            background:
+                radial-gradient(circle at 15% 25%, hsla(241, 79%, 61%, 0.2) 0%, hsla(241, 79%, 61%, 0.1) 20%, transparent 50%),
+                radial-gradient(circle at 85% 75%, hsla(262, 89%, 66%, 0.2) 0%, hsla(262, 89%, 66%, 0.05) 25%, transparent 45%),
+                radial-gradient(circle at 30% 60%, hsla(332, 82%, 60%, 0.15) 0%, hsla(332, 82%, 60%, 0.05) 35%, transparent 70%),
+                radial-gradient(circle at 70% 30%, hsla(280, 70%, 55%, 0.15) 0%, hsla(280, 70%, 55%, 0.1) 15%, hsla(280, 70%, 55%, 0.05) 30%, transparent 60%),
+                radial-gradient(circle at 5% 95%, hsla(220, 60%, 70%, 0.1) 0%, hsla(220, 60%, 70%, 0) 40%, transparent 80%);
             z-index: -2;
             transition: background var(--transition-speed) ease;
         }
@@ -671,6 +673,7 @@
             position: relative;
             display: inline-block;
             padding-bottom: 1rem;
+            text-align: center;
         }
         .section-title h2::after {
             content: '';
@@ -688,6 +691,12 @@
         }
         .section-title.visible h2::after {
             transform: translateX(-50%) scaleX(1);
+        }
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 1rem auto 0;
         }
         .about-content {
             display: -ms-grid;
@@ -1130,29 +1139,6 @@
             border-radius: 4px;
             font-family: monospace;
         }
-        .qa-header {
-            text-align: center;
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease);
-        }
-        .qa-header.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        .qa-header h2 { 
-            font-size: clamp(2rem, 1.69rem + 1.37vw, 2.5rem); 
-            margin-bottom: 1rem; 
-        }
-        .qa-header p {
-            color: var(--gray);
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 0 auto;
-            opacity: 0;
-            animation: fadeIn 0.6s var(--transition-ease) forwards 0.2s;
-        }
         #contact {
             background-image: radial-gradient(circle at 50% 100%, hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.1), transparent 50%);
         }
@@ -1445,7 +1431,7 @@
             .hero-buttons > .btn:last-child {
                 margin-bottom: 0;
             }
-            .section-title, .section-title h2::after, .qa-header, .qa-header p, .qa-container, .qa-item, .skill-card, .skill-name, .skill-card p, .stat-item, .stat-number, .stat-text, .about-text h3, .about-text p {
+            .section-title, .section-title h2::after, .qa-container, .qa-item, .skill-card, .skill-name, .skill-card p, .stat-item, .stat-number, .stat-text, .about-text h3, .about-text p {
                 opacity: 1 !important;
                 animation: none !important;
                 transform: none !important;
@@ -1945,7 +1931,7 @@
 
         <section id="qa">
             <div class="container">
-                <div class="qa-header">
+                <div class="section-title">
                     <h2>Q&A</h2>
                     <p>Frequently asked questions about Cwelium</p>
                 </div>
@@ -2348,7 +2334,7 @@
                 });
             }, observerOptions);
 
-            document.querySelectorAll('section, .section-title, .qa-header, .qa-container, .contact-info, .about-img, .about-text').forEach(el => sectionObserver.observe(el));
+            document.querySelectorAll('section, .section-title, .qa-container, .contact-info, .about-img, .about-text').forEach(el => sectionObserver.observe(el));
             document.querySelectorAll('.skill-card, .qa-item, .why-card, .testimonial-card, .contact-item').forEach(el => itemObserver.observe(el));
             document.querySelectorAll('.stat-item').forEach(el => {
                 el.style.animationPlayState = 'paused';
