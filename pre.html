@@ -270,10 +270,24 @@
             transform: scale(1.05);
             color: var(--accent);
         }
-        .logo span {
+        .logo-icon-wrapper {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.1em;
+            height: 1em;
             margin-right: 0.5rem;
         }
-        .logo-icon-hovered {
+        .logo-icon-wrapper > i {
+            position: absolute;
+            transition: transform 0.4s var(--transition-ease), opacity 0.4s var(--transition-ease);
+            will-change: transform, opacity;
+            backface-visibility: hidden;
+        }
+        .logo-icon-hover {
+            opacity: 0;
+            transform: rotate(-20deg) scale(0.7);
             font-weight: 800;
             font-style: normal;
             display: inline-block;
@@ -1346,7 +1360,7 @@
         @keyframes slideInFromBottomRight {
             from {
                 opacity: 0;
-                transform: translate(50px, 50px) scale(0.95);
+                transform: translate(80px, 60px) rotateY(-10deg) rotateX(10deg) scale(0.95);
             }
             to {
                 opacity: 1;
@@ -1853,7 +1867,13 @@
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://raw.githubusercontent.com/Tips-Discord/Tips-Discord/refs/heads/main/image.png" alt="Screenshot of the Cwelium command-line interface, showing a colorful menu of options." decoding="async">
+                    <img 
+                        src="https://raw.githubusercontent.com/Tips-Discord/Tips-Discord/refs/heads/main/image.png" 
+                        alt="Screenshot of the Cwelium command-line interface, showing a colorful menu of options." 
+                        decoding="async"
+                        loading="eager" 
+                        fetchpriority="high"
+                    >
                 </div>
             </div>
         </section>
