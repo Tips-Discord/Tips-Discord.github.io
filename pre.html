@@ -128,6 +128,7 @@
             -moz-osx-font-smoothing: grayscale;
             text-rendering: optimizeLegibility;
             background-blend-mode: screen;
+            will-change: opacity, background-color, color;
         }
         body::before {
             content: '';
@@ -155,6 +156,7 @@
             text-decoration: none;
             transform: translateY(-120%);
             transition: transform 0.3s ease-out;
+            will-change: transform;
             z-index: 10000;
             border-bottom-right-radius: var(--radius);
         }
@@ -220,6 +222,7 @@
                         box-shadow 0.6s var(--transition-ease),
                         backdrop-filter 0.6s var(--transition-ease),
                         border-bottom-color 0.6s var(--transition-ease);
+            will-change: transform, padding, background-color, box-shadow, backdrop-filter, border-bottom-color;
             -webkit-backdrop-filter: blur(20px) saturate(180%);
             backdrop-filter: blur(20px) saturate(180%);
             background-color: hsla(240, 100%, 99%, 0.65);
@@ -261,6 +264,7 @@
             -ms-flex-align: center;
             align-items: center;
             transition: transform var(--transition-medium) var(--transition-ease), color var(--transition-medium) var(--transition-ease);
+            will-change: transform, color;
         }
         .logo:hover {
             transform: scale(1.05);
@@ -290,6 +294,7 @@
             position: relative;
             padding: 0.5rem 0;
             transition: color var(--transition-medium) var(--transition-ease), transform var(--transition-medium) var(--transition-ease);
+            will-change: color, transform;
         }
         .nav-links a::after {
             content: '';
@@ -303,6 +308,7 @@
             border-radius: 1px;
             transform: scaleX(0);
             transform-origin: center;
+            will-change: transform;
         }
         .nav-links a:hover {
             color: var(--primary);
@@ -346,6 +352,7 @@
             position: absolute;
             transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s ease-out;
             transform: translateZ(0);
+            will-change: transform, opacity;
         }
         .theme-toggle .fa-moon {
             transform: scale(1) rotate(0deg);
@@ -421,6 +428,7 @@
             position: relative;
             overflow: hidden;
             transition: background var(--transition-speed) ease-in-out, color var(--transition-speed) ease-in-out;
+            will-change: opacity, transform, background-position;
         }
         body.page-loaded .hero h1 {
             animation: 
@@ -459,7 +467,7 @@
             transform: scaleX(0);
             filter: blur(1.5px);
             opacity: 1;
-            will-change: transform, filter;
+            will-change: transform, filter, opacity;
             transition: transform var(--transition-medium) ease, filter var(--transition-medium) ease, background var(--transition-speed) ease;
         }
         body.page-loaded .hero h1 span::after {
@@ -496,6 +504,7 @@
             color: var(--gray);
             line-height: 1.7;
             opacity: 0;
+            will-change: opacity, transform;
         }
         body.page-loaded .hero p {
             animation: fadeInUp 0.8s var(--transition-ease) forwards 0.4s;
@@ -506,6 +515,7 @@
             margin-top: -1rem;
             margin-bottom: 2rem;
             opacity: 0;
+            will-change: opacity, transform;
         }
         body.page-loaded .hero-sub-p {
             animation: fadeInUp 0.8s var(--transition-ease) forwards 0.5s;
@@ -513,6 +523,7 @@
         .hero-buttons {
             display: flex;
             opacity: 0;
+            will-change: opacity, transform;
         }
         body.page-loaded .hero-buttons {
             animation: fadeInUp 0.8s var(--transition-ease) forwards 0.6s;
@@ -527,6 +538,7 @@
             flex: 0 1 80%;
             opacity: 0;
             perspective: 1500px;
+            will-change: opacity, transform;
         }
         body.page-loaded .hero-image {
             animation: slideInFromBottomRight 1.2s var(--transition-ease) forwards 0.6s;
@@ -577,6 +589,7 @@
             animation: ripple-effect 0.6s linear;
             background-color: hsla(0, 0%, 100%, 0.4);
             pointer-events: none;
+            will-change: transform, opacity;
         }
         @keyframes ripple-effect {
             from {
@@ -599,6 +612,7 @@
             background: linear-gradient(90deg, transparent, hsla(0, 0%, 100%, 0.3), transparent);
             background-position: left center;
             transition: left 0.6s ease;
+            will-change: left;
             z-index: -1;
         }
         .btn:hover {
@@ -630,6 +644,7 @@
             transform: translateY(40px);
             transition: opacity 0.8s var(--transition-ease), transform 0.8s var(--transition-ease), background-color var(--transition-speed);
             position: relative;
+            will-change: opacity, transform;
         }
         section.visible {
             opacity: 1;
@@ -662,6 +677,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease);
+            will-change: opacity, transform;
         }
         .section-title.visible {
             opacity: 1;
@@ -688,6 +704,7 @@
             transform-origin: center;
             transform: translateX(-50%) scaleX(0);
             transition: transform 0.6s var(--transition-ease), background-color var(--transition-speed);
+            will-change: transform;
         }
         .section-title.visible h2::after {
             transform: translateX(-50%) scaleX(1);
@@ -720,6 +737,9 @@
         .about-img.visible {
             opacity: 1;
             animation: fadeInLeft 0.8s var(--transition-ease) forwards;
+        }
+        .about-img.visible.done {
+            animation: none;
         }
         @keyframes fadeInLeft {
             from { opacity: 0; transform: translateX(-30px); }
@@ -772,12 +792,14 @@
             margin-bottom: 1.5rem;
             opacity: 0;
             animation: fadeInUp 0.6s var(--transition-ease) forwards 0.2s;
+            will-change: opacity, transform, filter;
         }
         .about-text p {
             margin-bottom: 1.5rem;
             color: var(--gray);
             opacity: 0;
             animation: fadeInUp 0.6s var(--transition-ease) forwards 0.4s;
+            will-change: opacity, transform, filter;
         }
         .stats {
             display: grid;
@@ -796,6 +818,7 @@
             flex-direction: column;
             justify-content: flex-start;
             align-items: center;
+            will-change: opacity, transform, filter;
         }
         .stat-item:nth-child(1) { animation-delay: 0.6s; -ms-grid-column: 1; grid-column: 1; }
         .stat-item:nth-child(2) { animation-delay: 0.7s; -ms-grid-column: 3; grid-column: 2; }
@@ -807,6 +830,7 @@
             color: var(--primary);
             margin-bottom: 0.5rem;
             transition: color var(--transition-speed), text-shadow 0.4s ease;
+            will-change: color, text-shadow;
         }
         .stat-text {
             color: var(--gray);
@@ -814,6 +838,7 @@
             opacity: 0;
             animation: fadeIn 0.5s var(--transition-ease) forwards 1.2s;
             transition: color 0.4s ease, transform 0.4s ease;
+            will-change: opacity, color, transform;
         }
         .stat-item.counting-finished .stat-number {
             text-shadow: 0 0 10px hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.5);
@@ -866,6 +891,7 @@
             transition: opacity 0.5s var(--transition-ease), transform 0.5s var(--transition-ease);
             pointer-events: none;
             z-index: -1;
+            will-change: opacity, transform;
         }
         .why-card:hover::before, .skill-card:hover::before, .testimonial-card:hover::before {
             opacity: 1;
@@ -903,6 +929,7 @@
             color: var(--primary);
             margin-bottom: 1rem;
             transition: transform var(--transition-medium) ease, color var(--transition-medium) ease;
+            will-change: transform, color;
         }
         .why-card h3 {
             font-size: 1.4rem;
@@ -1002,6 +1029,7 @@
             color: var(--primary);
             font-size: 1.5rem;
             transition: transform var(--transition-medium) ease, background var(--transition-speed), color var(--transition-speed);
+            will-change: transform, background, color;
         }
         .skill-card:hover .skill-icon {
             transform: scale(1.15) rotate(5deg) translateZ(20px);
@@ -1011,11 +1039,13 @@
             font-weight: 600;
             opacity: 0;
             animation: fadeIn 0.4s var(--transition-ease) forwards;
+            will-change: opacity;
         }
         .skill-card p {
             opacity: 0;
             animation: fadeIn 0.4s var(--transition-ease) forwards 0.1s;
             transition: color var(--transition-speed), transform var(--transition-speed);
+            will-change: opacity, color, transform;
         }
         .qa-container {
             max-width: 800px;
@@ -1027,7 +1057,7 @@
             border: 1px solid hsla(0, 0%, 0%, 0.1);
             opacity: 0;
             transform: translateY(30px);
-            will-change: transform, box-shadow;
+            will-change: opacity, transform, box-shadow;
             transition: opacity 0.6s var(--transition-ease), transform 0.6s var(--transition-ease), box-shadow var(--transition-speed), background-color var(--transition-speed), border-color var(--transition-speed);
         }
         .qa-container.visible {
@@ -1044,6 +1074,7 @@
             opacity: 0;
             transform: translateX(-20px);
             transition: opacity 0.5s var(--transition-ease), transform 0.5s var(--transition-ease), border-bottom-color var(--transition-speed);
+            will-change: opacity, transform;
         }
         .qa-item:last-child {
             margin-bottom: 0;
@@ -1117,6 +1148,7 @@
             opacity: 0;
             padding: 0 2rem;
             transform: translateY(-10px);
+            will-change: max-height, padding, opacity, transform;
         }
         .qa-answer.show {
             max-height: 500px;
@@ -1189,6 +1221,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.5s ease-out, transform 0.5s ease-out, background-color 0.3s ease-out;
+            will-change: opacity, transform, background-color;
         }
         .contact-item:hover {
             transform: translateX(8px);
@@ -1226,6 +1259,7 @@
             flex-shrink: 0;
             transition: transform var(--transition-medium) var(--transition-ease), background-color var(--transition-medium), color var(--transition-medium);
             margin-right: 1rem;
+            will-change: transform, background-color, color;
         }
         .contact-item:hover .contact-icon {
             transform: scale(1.2) rotate(5deg);
@@ -1236,6 +1270,7 @@
             margin-bottom: 0.3rem;
             opacity: 0;
             animation: fadeInUp 0.4s var(--transition-ease) forwards 0.1s;
+            will-change: opacity, transform, filter;
         }
         .contact-text p, .contact-text a {
             color: var(--gray);
@@ -1243,6 +1278,7 @@
             transition: color var(--transition-speed);
             opacity: 0;
             animation: fadeInUp 0.4s var(--transition-ease) forwards 0.2s;
+            will-change: opacity, transform, filter, color;
         }
         .contact-text a {
             font-weight: 600;
@@ -1262,6 +1298,7 @@
             transition: transform 0.35s var(--transition-ease, ease);
             transform: scaleX(0);
             transform-origin: left;
+            will-change: transform;
         }
         .contact-text a:hover::after,
         .qa-answer a:hover::after {
@@ -1296,6 +1333,7 @@
             font-size: 1.5rem;
             margin-left: 1.2rem;
             transition: color 0.3s ease, transform 0.3s ease;
+            will-change: color, transform;
         }
         .footer-socials a:hover {
             color: var(--primary);
@@ -1476,6 +1514,7 @@
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
+            will-change: opacity;
         }
         .modal-overlay.visible {
             opacity: 1;
@@ -1501,6 +1540,7 @@
                 background-color var(--transition-speed),
                 border-color var(--transition-speed);
             border: 1px solid hsla(0, 0%, 100%, 0.2);
+            will-change: transform, opacity;
         }
         .modal-overlay.visible .modal-content {
             transform: scale(1) translateY(0);
@@ -1537,6 +1577,7 @@
             color: var(--gray);
             transition: color var(--transition-medium), transform var(--transition-medium);
             padding: 0;
+            will-change: color, transform;
         }
         .modal-close:hover {
             color: var(--accent);
@@ -1558,6 +1599,7 @@
             border-radius: 8px;
             font-weight: 500;
             transition: background-color var(--transition-medium), transform var(--transition-medium), color var(--transition-medium);
+            will-change: background-color, transform, color;
         }
         [data-theme="dark"] .feature-list li {
             background: hsla(var(--primary-h), var(--primary-s), var(--primary-l), 0.1);
@@ -2339,6 +2381,12 @@
             document.querySelectorAll('.stat-item').forEach(el => {
                 el.style.animationPlayState = 'paused';
                 statItemObserver.observe(el);
+            });
+
+            document.querySelectorAll('.about-img').forEach(img => {
+                img.addEventListener('animationend', () => {
+                    img.style.animation = 'none';
+                });
             });
 
            const qaQuestions = document.querySelectorAll('.qa-question');
